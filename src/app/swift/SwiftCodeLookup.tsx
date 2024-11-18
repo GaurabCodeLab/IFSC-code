@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { lookupSwiftCode } from "./actions";
-import { Loader2 } from "lucide-react";
+import { Loader2, X } from "lucide-react";
 
 export default function SwiftCodeLookup() {
   const [swiftCode, setSwiftCode] = useState("");
@@ -23,6 +23,10 @@ export default function SwiftCodeLookup() {
     setIsLoading(true);
     await formAction(formData);
     setIsLoading(false);
+  };
+
+  const handleClear = () => {
+    setSwiftCode("");
   };
 
   const renderBankDetail = (
@@ -86,17 +90,31 @@ export default function SwiftCodeLookup() {
                 <label htmlFor="swift-input" className="text-sm font-medium">
                   SWIFT Code
                 </label>
-                <Input
-                  id="swift-input"
-                  name="swiftCode"
-                  value={swiftCode}
-                  onChange={(e) => setSwiftCode(e.target.value.toUpperCase())}
-                  placeholder="Enter SWIFT code"
-                  maxLength={11}
-                  pattern="^[A-Z]{6}[A-Z0-9]{2}([A-Z0-9]{3})?$"
-                  title="Please enter a valid SWIFT code"
-                  required
-                />
+                <div className="relative">
+                  <Input
+                    id="swift-input"
+                    name="swiftCode"
+                    value={swiftCode}
+                    onChange={(e) => setSwiftCode(e.target.value.toUpperCase())}
+                    placeholder="Enter SWIFT code"
+                    maxLength={11}
+                    pattern="^[A-Z]{6}[A-Z0-9]{2}([A-Z0-9]{3})?$"
+                    title="Please enter a valid SWIFT code"
+                    required
+                  />
+                  {swiftCode && (
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="icon"
+                      className="absolute right-0 top-0 h-full"
+                      onClick={handleClear}
+                      aria-label="Clear IFSC Code"
+                    >
+                      <X className="h-4 w-4" />
+                    </Button>
+                  )}
+                </div>
               </div>
               <Button type="submit" className="w-full" disabled={isLoading}>
                 {isLoading ? (

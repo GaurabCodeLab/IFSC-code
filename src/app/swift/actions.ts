@@ -16,7 +16,6 @@ const bankDetailsSchema = z.object({
 
 export async function lookupSwiftCode(prevState: any, formData: FormData) {
   const swiftCode = formData.get("swiftCode");
-  console.log("swift code hai", swiftCode);
   try {
     swiftCodeSchema.parse(swiftCode);
   } catch (error) {
@@ -25,7 +24,7 @@ export async function lookupSwiftCode(prevState: any, formData: FormData) {
 
   try {
     // Replace this URL with your actual API endpoint
-    const response = await fetch(`http://localhost:3000/api/swift`, {
+    const response = await fetch(`http://localhost:3001/api/swift`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
