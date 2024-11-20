@@ -17,10 +17,10 @@ export async function generateMetadata({
 
   return {
     title: post.title,
-    description: post.excerpt,
+    description: post.introduction,
     openGraph: {
       title: post.title,
-      description: post.excerpt,
+      description: post.introduction,
       type: "article",
       publishedTime: post.date,
       authors: [post.author],
@@ -28,7 +28,7 @@ export async function generateMetadata({
     twitter: {
       card: "summary_large_image",
       title: post.title,
-      description: post.excerpt,
+      description: post.introduction,
     },
   };
 }

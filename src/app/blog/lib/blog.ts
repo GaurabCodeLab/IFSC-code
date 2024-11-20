@@ -11,7 +11,12 @@ export interface BlogPost {
   author: string;
   authorImage: string;
   content: string;
-  excerpt: string;
+  introduction: string;
+  takeaways: string[];
+  cta: {
+    text: string;
+    link: string;
+  };
 }
 
 export async function getAllBlogPosts(): Promise<BlogPost[]> {
@@ -26,7 +31,6 @@ export async function getAllBlogPosts(): Promise<BlogPost[]> {
       slug,
       ...data,
       content,
-      excerpt: content.slice(0, 150) + "...",
     } as BlogPost;
   });
 
@@ -50,7 +54,6 @@ export async function getBlogPostBySlug(
       slug,
       ...data,
       content,
-      excerpt: content.slice(0, 150) + "...",
     } as BlogPost;
   } catch (error) {
     console.error(`Error fetching blog post for slug: ${slug}`, error);

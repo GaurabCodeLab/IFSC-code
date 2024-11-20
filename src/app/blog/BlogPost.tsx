@@ -10,6 +10,12 @@ interface BlogPostProps {
   content: string;
   author: string;
   authorImage: string;
+  introduction: string;
+  takeaways: string[];
+  cta: {
+    text: string;
+    link: string;
+  };
   prevPost?: { slug: string; title: string };
   nextPost?: { slug: string; title: string };
 }
@@ -20,6 +26,9 @@ export default function BlogPost({
   content,
   author,
   authorImage,
+  introduction,
+  takeaways,
+  cta,
   prevPost,
   nextPost,
 }: BlogPostProps) {
@@ -44,7 +53,33 @@ export default function BlogPost({
         </CardHeader>
         <CardContent>
           <div className="prose prose-lg max-w-none">
-            <MDXRemote source={content} />
+            <p className="text-xl font-semibold mb-4">{introduction}</p>
+            {/* <MDXRemote source={content} /> */}
+            <section>
+              <h2 className="text-xl font-bold mb-2">
+                Decoding SWIFT Codes: Your Key to Seamless International
+                Transfers
+              </h2>
+              <p>
+                Picture this: You're sipping coffee in Mumbai, tapping a few
+                buttons on your phone, and within moments, your friend in New
+                York receives the money you owed her. Sounds like magic, right?
+                Well, behind this seemingly simple transaction lies a complex
+                network, and at its heart are SWIFT codes.
+              </p>
+            </section>
+            <h2 className="text-2xl font-bold mt-8 mb-4">Key Takeaways</h2>
+            <ul className="list-disc pl-5 space-y-2">
+              {takeaways.map((takeaway, index) => (
+                <li key={index}>{takeaway}</li>
+              ))}
+            </ul>
+            <div className="mt-8 p-4 bg-gray-100 rounded-lg">
+              <h3 className="text-xl font-bold mb-2">Next Steps</h3>
+              <Link href={cta.link} className="text-blue-600 hover:underline">
+                {cta.text}
+              </Link>
+            </div>
           </div>
         </CardContent>
       </Card>

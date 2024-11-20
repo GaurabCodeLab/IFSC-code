@@ -46,7 +46,7 @@ export default function SwiftCodeLookup() {
   return (
     <div className="w-full max-w-6xl mx-auto p-4">
       <h1 className="text-3xl font-bold mb-6 text-center">SWIFT Code Lookup</h1>
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="md:grid md:grid-cols-2 gap-6 flex flex-col-reverse">
         <Card>
           <CardHeader>
             <CardTitle>What is a SWIFT code?</CardTitle>

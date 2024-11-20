@@ -24,7 +24,7 @@ export async function lookupSwiftCode(prevState: any, formData: FormData) {
 
   try {
     // Replace this URL with your actual API endpoint
-    const response = await fetch(`http://localhost:3001/api/swift`, {
+    const response = await fetch("https://ifsc-backend.vercel.app/api/swift", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
