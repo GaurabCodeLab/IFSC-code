@@ -9,13 +9,14 @@ export default function Footer() {
             codes.
           </p>
           <p className="text-justify">
-            Disclaimer: We strive to provide the most accurate and up-to-date
-            information available from the RBI. However, users are advised to
-            verify details with the respective bank before relying on the
-            information provided. The author assumes no responsibility for the
-            accuracy, completeness, timeliness, or quality of the content. Any
-            claims for damages resulting from the use of the information,
-            whether incomplete or inaccurate, will not be entertained.
+            <strong>Disclaimer:</strong> We strive to provide the most accurate
+            and up-to-date information available from the RBI. However, users
+            are advised to verify details with the respective bank before
+            relying on the information provided. The author assumes no
+            responsibility for the accuracy, completeness, timeliness, or
+            quality of the content. Any claims for damages resulting from the
+            use of the information, whether incomplete or inaccurate, will not
+            be entertained.
           </p>
         </div>
         <div className="mt-2 pt-2 border-t border-gray-700 text-center text-gray-300">

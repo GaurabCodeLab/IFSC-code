@@ -54,8 +54,8 @@ export default function BlogPost({
         <CardContent>
           <div className="prose prose-lg max-w-none">
             <p className="text-xl font-semibold mb-4">{introduction}</p>
-            {/* <MDXRemote source={content} /> */}
-            <section>
+            <MDXRemote source={content} />
+            {/* <section>
               <h2 className="text-xl font-bold mb-2">
                 Decoding SWIFT Codes: Your Key to Seamless International
                 Transfers
@@ -67,7 +67,7 @@ export default function BlogPost({
                 Well, behind this seemingly simple transaction lies a complex
                 network, and at its heart are SWIFT codes.
               </p>
-            </section>
+            </section> */}
             <h2 className="text-2xl font-bold mt-8 mb-4">Key Takeaways</h2>
             <ul className="list-disc pl-5 space-y-2">
               {takeaways.map((takeaway, index) => (
