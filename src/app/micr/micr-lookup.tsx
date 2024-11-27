@@ -26,7 +26,7 @@ export default function MICRLookup() {
   const handleClear = () => {
     setMicrCode("");
   };
-
+  console.log("state data hai");
   const renderBankDetail = (label: string, value: string | undefined) => {
     if (value && value !== "N/A") {
       return (

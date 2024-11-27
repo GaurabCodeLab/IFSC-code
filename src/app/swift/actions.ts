@@ -12,6 +12,9 @@ const bankDetailsSchema = z.object({
   ADDRESS: z.string(),
   IFSC: z.string().optional(),
   MICR: z.number().optional(),
+  BRANCH_CODE: z.number().optional(),
+  CONTACT: z.string().optional(),
+  STATE: z.string(),
 });
 
 export async function lookupSwiftCode(prevState: any, formData: FormData) {

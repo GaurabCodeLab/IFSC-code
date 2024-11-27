@@ -13,18 +13,26 @@ import {
 } from "@/components/ui/card";
 import { X } from "lucide-react";
 import { lookupMICR } from "./actions";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function MICRLookup() {
   const [micrCode, setMicrCode] = useState("");
   const [state, formAction] = useFormState(lookupMICR, null);
+  const [loading, setLoading] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.replace(/\D/g, "").slice(0, 9);
     setMicrCode(value);
+    setLoading(false);
   };
 
   const handleClear = () => {
     setMicrCode("");
+    setLoading(false);
+  };
+
+  const handleSubmit = (): void => {
+    setLoading(true);
   };
 
   const renderBankDetail = (label: string, value: string | undefined) => {
@@ -37,7 +45,7 @@ export default function MICRLookup() {
     }
     return null;
   };
-
+  console.log("loading data hai", loading, state);
   return (
     <div className="w-full max-w-6xl mx-auto p-4">
       <h1 className="text-3xl font-bold mb-6 text-center">MICR Code Lookup</h1>
@@ -79,7 +87,11 @@ export default function MICRLookup() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <form action={formAction} className="space-y-4">
+            <form
+              action={formAction}
+              className="space-y-4"
+              onSubmit={handleSubmit}
+            >
               <div className="relative">
                 <Input
                   type="text"
@@ -115,7 +127,16 @@ export default function MICRLookup() {
                   {state.error}
                 </p>
               )}
-              {state?.data && (
+              {loading || (state?.error ? !state?.error : false) ? (
+                <div className="space-y-2">
+                  <h2 className="text-xl font-semibold">Bank Details</h2>
+                  <Skeleton className="h-4 w-[250px] bg-gray-300" />
+                  <Skeleton className="h-4 w-[200px] bg-gray-300" />
+                  <Skeleton className="h-4 w-[150px] bg-gray-300" />
+                  <Skeleton className="h-4 w-[180px] bg-gray-300" />
+                  <Skeleton className="h-4 w-[300px] bg-gray-300" />
+                </div>
+              ) : state?.data ? (
                 <div className="mt-4 space-y-2">
                   <h2 className="text-xl font-semibold">Bank Details</h2>
                   <div className="grid gap-2">
@@ -131,7 +152,7 @@ export default function MICRLookup() {
                     {renderBankDetail("State", state.data.STATE)}
                   </div>
                 </div>
-              )}
+              ) : null}
             </form>
           </CardContent>
         </Card>

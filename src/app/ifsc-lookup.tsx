@@ -13,18 +13,26 @@ import {
 } from "@/components/ui/card";
 import { X } from "lucide-react";
 import { lookupIFSC } from "./actions";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function IFSCLookup() {
   const [ifscCode, setIfscCode] = useState("");
   const [state, formAction] = useFormState(lookupIFSC, null);
+  const [loading, setLoading] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.toUpperCase().slice(0, 11);
     setIfscCode(value);
+    setLoading(false);
   };
 
   const handleClear = () => {
     setIfscCode("");
+    setLoading(false);
+  };
+
+  const handleSubmit = (): void => {
+    setLoading(true);
   };
 
   const renderBankDetail = (label: string, value: string | undefined) => {
@@ -76,7 +84,11 @@ export default function IFSCLookup() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <form action={formAction} className="space-y-4">
+            <form
+              action={formAction}
+              className="space-y-4"
+              onSubmit={handleSubmit}
+            >
               <div className="relative">
                 <Input
                   type="text"
@@ -112,14 +124,14 @@ export default function IFSCLookup() {
                   {state.error}
                 </p>
               )}
-              {state?.data && (
+              {state?.data ? (
                 <div className="mt-4 space-y-2">
                   <h2 className="text-xl font-semibold">Bank Details</h2>
                   <div className="grid gap-2">
                     {renderBankDetail("Bank", state.data.BANK)}
                     {renderBankDetail("Branch", state.data.BRANCH)}
-                    {renderBankDetail("IFSC", state.data.IFSC)}
                     {renderBankDetail("MICR", state.data.MICR)}
+                    {renderBankDetail("IFSC", state.data.IFSC)}
                     {renderBankDetail("Swift Code", state.data.SWIFT)}
                     {renderBankDetail("Branch Code", state.data.BRANCH_CODE)}
                     {renderBankDetail("Contact", state.data.CONTACT)}
@@ -128,7 +140,16 @@ export default function IFSCLookup() {
                     {renderBankDetail("State", state.data.STATE)}
                   </div>
                 </div>
-              )}
+              ) : loading && !state?.error ? (
+                <div className="space-y-2">
+                  <h2 className="text-xl font-semibold">Bank Details</h2>
+                  <Skeleton className="h-4 w-[250px] bg-gray-300" />
+                  <Skeleton className="h-4 w-[200px] bg-gray-300" />
+                  <Skeleton className="h-4 w-[150px] bg-gray-300" />
+                  <Skeleton className="h-4 w-[180px] bg-gray-300" />
+                  <Skeleton className="h-4 w-[300px] bg-gray-300" />
+                </div>
+              ) : null}
             </form>
           </CardContent>
         </Card>
