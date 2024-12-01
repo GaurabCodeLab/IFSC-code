@@ -1,32 +1,25 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useFormState } from "react-dom";
-import { Button } from "@/components/ui/button";
+import { useState, useEffect, useCallback } from "react";
+import Select from "react-select";
+import { getBanks, getBranches, getBranchDetails } from "./bankActions";
+import { useDebounce } from "./useDebounce";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
   CardTitle,
+  CardDescription,
 } from "@/components/ui/card";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Skeleton } from "@/components/ui/skeleton";
-import { fetchBanks, fetchBranches, lookupBankBranch } from "./actions";
+import { Loader2 } from "lucide-react";
 
-interface Bank {
-  id: number;
-  name: string;
+interface Option {
+  value: string;
+  label: string;
 }
 
-interface Branch {
-  _id: string;
+interface BranchDetails {
   BANK: string;
   IFSC: string;
   BRANCH: string;
@@ -46,55 +39,100 @@ interface Branch {
 }
 
 export default function BankBranchLookup() {
-  const [banks, setBanks] = useState<Bank[]>([]);
-  const [branches, setBranches] = useState<Branch[]>([]);
-  const [selectedBank, setSelectedBank] = useState("");
-  const [selectedBranch, setSelectedBranch] = useState("");
-  const [isBanksLoading, setIsBanksLoading] = useState(true);
-  const [isBranchesLoading, setIsBranchesLoading] = useState(false);
-  const [banksError, setBanksError] = useState<string | null>(null);
-  const [branchesError, setBranchesError] = useState<string | null>(null);
-  const [state, formAction] = useFormState(lookupBankBranch, null);
+  const [banks, setBanks] = useState<Option[]>([]);
+  const [branches, setBranches] = useState<Option[]>([]);
+  const [selectedBank, setSelectedBank] = useState<Option | null>(null);
+  const [selectedBranch, setSelectedBranch] = useState<Option | null>(null);
+  const [bankSearch, setBankSearch] = useState("");
+  const [branchSearch, setBranchSearch] = useState("");
+  const [branchDetails, setBranchDetails] = useState<BranchDetails | null>(
+    null
+  );
+  const [isLoadingBanks, setIsLoadingBanks] = useState(false);
+  const [isLoadingBranches, setIsLoadingBranches] = useState(false);
+  const [isLoadingDetails, setIsLoadingDetails] = useState(false);
 
-  useEffect(() => {
-    loadBanks();
+  const debouncedBankSearch = useDebounce(bankSearch, 300);
+  const debouncedBranchSearch = useDebounce(branchSearch, 300);
+
+  const fetchBanks = useCallback(async (search: string) => {
+    setIsLoadingBanks(true);
+    try {
+      const data = await getBanks(search);
+      setBanks(data.map((bank) => ({ value: bank.id, label: bank.name })));
+    } catch (error) {
+      console.error("Error fetching banks:", error);
+    } finally {
+      setIsLoadingBanks(false);
+    }
   }, []);
 
+  const fetchBranches = useCallback(
+    async (bankName: string, search: string) => {
+      setIsLoadingBranches(true);
+      try {
+        const data = await getBranches(bankName, search);
+        setBranches(
+          data.map((branch) => ({ value: branch.id, label: branch.name }))
+        );
+      } catch (error) {
+        console.error("Error fetching branches:", error);
+      } finally {
+        setIsLoadingBranches(false);
+      }
+    },
+    []
+  );
+
+  const fetchBranchDetails = useCallback(
+    async (bankName: string, branchName: string) => {
+      setIsLoadingDetails(true);
+      try {
+        const data = await getBranchDetails(bankName, branchName);
+        console.log("data hai", data);
+        setBranchDetails(data);
+      } catch (error) {
+        console.error("Error fetching branch details:", error);
+      } finally {
+        setIsLoadingDetails(false);
+      }
+    },
+    []
+  );
+
   useEffect(() => {
-    if (selectedBank) {
-      loadBranches(selectedBank);
-    }
-  }, [selectedBank]);
+    fetchBanks("");
+  }, [fetchBanks]);
 
-  const loadBanks = async () => {
-    setIsBanksLoading(true);
-    setBanksError(null);
-    try {
-      const data = await fetchBanks();
-      setBanks(data);
-    } catch (error) {
-      setBanksError("Failed to load banks. Please try again.");
-    } finally {
-      setIsBanksLoading(false);
+  useEffect(() => {
+    if (debouncedBankSearch) {
+      fetchBanks(debouncedBankSearch);
     }
-  };
+  }, [debouncedBankSearch, fetchBanks]);
 
-  const loadBranches = async (bankName: string) => {
-    setIsBranchesLoading(true);
-    setBranchesError(null);
-    try {
-      const data = await fetchBranches(bankName);
-      setBranches(data);
-    } catch (error) {
-      setBranchesError("Failed to load branches. Please try again.");
-    } finally {
-      setIsBranchesLoading(false);
+  useEffect(() => {
+    if (selectedBank && debouncedBranchSearch) {
+      fetchBranches(selectedBank.label, debouncedBranchSearch);
+    }
+  }, [selectedBank, debouncedBranchSearch, fetchBranches]);
+
+  const handleBankChange = (option: Option | null) => {
+    setSelectedBank(option);
+    setSelectedBranch(null);
+    setBranchDetails(null);
+    setBranches([]);
+    if (option) {
+      fetchBranches(option.label, "");
     }
   };
 
-  const handleBankChange = (value: string) => {
-    setSelectedBank(value);
-    setSelectedBranch("");
+  const handleBranchChange = (option: Option | null) => {
+    setSelectedBranch(option);
+    if (selectedBank && option) {
+      fetchBranchDetails(selectedBank.label, option.label);
+    } else {
+      setBranchDetails(null);
+    }
   };
 
   const renderBankDetail = (
@@ -173,104 +211,94 @@ export default function BankBranchLookup() {
             </CardContent>
           </Card>
         </div>
-
         <Card>
           <CardHeader>
             <CardTitle>Bank Details Lookup</CardTitle>
             <CardDescription>
-              Select a bank and branch to find details
+              Select a bank name and branch name to find bank details
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <form action={formAction} className="space-y-4">
-              <div className="space-y-2">
-                <label htmlFor="bank-select" className="text-sm font-medium">
-                  Select Bank
-                </label>
-                {isBanksLoading ? (
-                  <Skeleton className="h-10 w-full" />
-                ) : banksError ? (
-                  <p className="text-red-500">{banksError}</p>
-                ) : (
-                  <Select
-                    name="bank"
-                    value={selectedBank}
-                    onValueChange={handleBankChange}
-                  >
-                    <SelectTrigger id="bank-select">
-                      <SelectValue placeholder="Select a bank" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {banks.map((bank) => (
-                        <SelectItem key={bank.id} value={bank.name}>
-                          {bank.name}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                )}
-              </div>
-              <div className="space-y-2">
-                <label htmlFor="branch-select" className="text-sm font-medium">
-                  Select Branch
-                </label>
-                {isBranchesLoading ? (
-                  <Skeleton className="h-10 w-full" />
-                ) : branchesError ? (
-                  <p className="text-red-500">{branchesError}</p>
-                ) : (
-                  <Select
-                    name="branch"
-                    value={selectedBranch}
-                    onValueChange={setSelectedBranch}
-                    disabled={!selectedBank}
-                  >
-                    <SelectTrigger id="branch-select">
-                      <SelectValue placeholder="Select a branch" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {branches.map((branch) => (
-                        <SelectItem key={branch._id} value={branch.BRANCH}>
-                          {branch.BRANCH}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                )}
-              </div>
-              <Button
-                type="submit"
-                className="w-full"
-                disabled={!selectedBank || !selectedBranch}
+            <div className="space-y-2">
+              <label
+                htmlFor="bank-select"
+                className="block text-sm font-medium text-gray-700"
               >
-                Search
-              </Button>
-              {state?.error && (
-                <p className="text-red-500" role="alert">
-                  {state.error}
-                </p>
-              )}
-              {state?.data && (
-                <div className="mt-4 space-y-2">
-                  <h2 className="text-xl font-semibold">Bank Details</h2>
-                  <div className="grid gap-2">
-                    {renderBankDetail("Bank", state.data.BANK)}
-                    {renderBankDetail("Branch", state.data.BRANCH)}
-                    {renderBankDetail("IFSC", state.data.IFSC)}
-                    {renderBankDetail("MICR", state.data.MICR)}
-                    {renderBankDetail("SWIFT", state.data.SWIFT)}
-                    {renderBankDetail("Address", state.data.ADDRESS)}
-                    {renderBankDetail("City", state.data.CITY)}
-                    {renderBankDetail("State", state.data.STATE)}
-                    {renderBankDetail("Contact", state.data.CONTACT)}
-                    {renderBankDetail("IMPS", state.data.IMPS)}
-                    {renderBankDetail("RTGS", state.data.RTGS)}
-                    {renderBankDetail("NEFT", state.data.NEFT)}
-                    {renderBankDetail("UPI", state.data.UPI)}
-                  </div>
+                Select a bank
+              </label>
+              <Select
+                id="bank-select"
+                options={banks}
+                value={selectedBank}
+                onChange={handleBankChange}
+                onInputChange={setBankSearch}
+                placeholder="Search and select a bank"
+                isClearable
+                isSearchable
+                isLoading={isLoadingBanks}
+                className="react-select-container"
+                classNamePrefix="react-select"
+              />
+              {true && (
+                <div className="space-y-2">
+                  <label
+                    htmlFor="branch-select"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Select a branch
+                  </label>
+                  <Select
+                    id="branch-select"
+                    options={branches}
+                    value={selectedBranch}
+                    onChange={handleBranchChange}
+                    onInputChange={setBranchSearch}
+                    placeholder="Search and select a branch"
+                    isClearable
+                    isSearchable
+                    isLoading={isLoadingBranches}
+                    className="react-select-container"
+                    classNamePrefix="react-select"
+                  />
                 </div>
               )}
-            </form>
+              {selectedBank && selectedBranch && (
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Branch Details</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    {isLoadingDetails ? (
+                      <div className="space-y-2">
+                        <Skeleton className="h-4 w-[250px]" />
+                        <Skeleton className="h-4 w-[200px]" />
+                        <Skeleton className="h-4 w-[150px]" />
+                        <Skeleton className="h-4 w-[180px]" />
+                        <Skeleton className="h-4 w-[300px]" />
+                      </div>
+                    ) : branchDetails ? (
+                      <div className="mt-0 space-y-2">
+                        <div className="grid gap-2">
+                          {renderBankDetail("Bank", branchDetails.BANK)}
+                          {renderBankDetail("Branch", branchDetails.BRANCH)}
+                          {renderBankDetail("IFSC", branchDetails.IFSC)}
+                          {renderBankDetail("MICR", branchDetails.MICR)}
+                          {renderBankDetail("SWIFT", branchDetails.SWIFT)}
+                          {renderBankDetail("Address", branchDetails.ADDRESS)}
+                          {renderBankDetail("City", branchDetails.CITY)}
+                          {renderBankDetail("State", branchDetails.STATE)}
+                          {renderBankDetail("Contact", branchDetails.CONTACT)}
+                        </div>
+                      </div>
+                    ) : (
+                      <p className="text-sm text-gray-500">
+                        Select a bank and branch to view details.
+                      </p>
+                    )}
+                  </CardContent>
+                </Card>
+              )}
+            </div>
           </CardContent>
         </Card>
       </div>

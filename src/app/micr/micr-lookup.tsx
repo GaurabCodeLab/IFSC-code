@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useFormState } from "react-dom";
+import { useFormState, useFormStatus } from "react-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -13,7 +13,17 @@ import {
 } from "@/components/ui/card";
 import { X } from "lucide-react";
 import { lookupMICR } from "./actions";
+import { Skeleton } from "@/components/ui/skeleton";
 
+function SubmitButton() {
+  const { pending } = useFormStatus();
+
+  return (
+    <Button type="submit" className="w-full" disabled={pending}>
+      {pending ? "Searching..." : "Search"}
+    </Button>
+  );
+}
 export default function MICRLookup() {
   const [micrCode, setMicrCode] = useState("");
   const [state, formAction] = useFormState(lookupMICR, null);
@@ -25,8 +35,8 @@ export default function MICRLookup() {
 
   const handleClear = () => {
     setMicrCode("");
+    formAction({ type: "reset" } as any);
   };
-  console.log("state data hai");
   const renderBankDetail = (label: string, value: string | undefined) => {
     if (value && value !== "N/A") {
       return (
@@ -107,35 +117,70 @@ export default function MICRLookup() {
                   </Button>
                 )}
               </div>
-              <Button type="submit" className="w-full">
-                Search
-              </Button>
-              {state?.error && (
-                <p className="text-red-500" role="alert">
-                  {state.error}
-                </p>
-              )}
-              {state?.data && (
-                <div className="mt-4 space-y-2">
-                  <h2 className="text-xl font-semibold">Bank Details</h2>
-                  <div className="grid gap-2">
-                    {renderBankDetail("Bank", state.data.BANK)}
-                    {renderBankDetail("Branch", state.data.BRANCH)}
-                    {renderBankDetail("MICR", state.data.MICR)}
-                    {renderBankDetail("IFSC", state.data.IFSC)}
-                    {renderBankDetail("Swift Code", state.data.SWIFT)}
-                    {renderBankDetail("Branch Code", state.data.BRANCH_CODE)}
-                    {renderBankDetail("Contact", state.data.CONTACT)}
-                    {renderBankDetail("Address", state.data.ADDRESS)}
-                    {renderBankDetail("City", state.data.CITY)}
-                    {renderBankDetail("State", state.data.STATE)}
-                  </div>
-                </div>
-              )}
+              <SubmitButton />
+              <ResultsArea state={state} />
             </form>
           </CardContent>
         </Card>
       </div>
     </div>
   );
+}
+
+function ResultsArea({ state }: { state: any }) {
+  const { pending } = useFormStatus();
+
+  if (pending) {
+    return (
+      <div className="space-y-2" aria-live="polite" aria-busy="true">
+        <h2 className="text-xl font-semibold">Bank Details</h2>
+        <Skeleton className="h-4 w-[250px] bg-gray-300" />
+        <Skeleton className="h-4 w-[200px] bg-gray-300" />
+        <Skeleton className="h-4 w-[150px] bg-gray-300" />
+        <Skeleton className="h-4 w-[180px] bg-gray-300" />
+        <Skeleton className="h-4 w-[300px] bg-gray-300" />
+      </div>
+    );
+  }
+
+  if (state?.error) {
+    return (
+      <p className="text-red-500" role="alert">
+        {state.error}
+      </p>
+    );
+  }
+
+  if (state?.data) {
+    return (
+      <div className="mt-4 space-y-2" aria-live="polite">
+        <h2 className="text-xl font-semibold">Bank Details</h2>
+        <div className="grid gap-2">
+          {renderBankDetail("Bank", state.data.BANK)}
+          {renderBankDetail("Branch", state.data.BRANCH)}
+          {renderBankDetail("MICR", state.data.MICR)}
+          {renderBankDetail("IFSC", state.data.IFSC)}
+          {renderBankDetail("Swift Code", state.data.SWIFT)}
+          {renderBankDetail("Branch Code", state.data.BRANCH_CODE)}
+          {renderBankDetail("Contact", state.data.CONTACT)}
+          {renderBankDetail("Address", state.data.ADDRESS)}
+          {renderBankDetail("City", state.data.CITY)}
+          {renderBankDetail("State", state.data.STATE)}
+        </div>
+      </div>
+    );
+  }
+
+  return null;
+}
+
+function renderBankDetail(label: string, value: string | undefined) {
+  if (value && value !== "N/A") {
+    return (
+      <p>
+        <strong>{label}:</strong> {value}
+      </p>
+    );
+  }
+  return null;
 }

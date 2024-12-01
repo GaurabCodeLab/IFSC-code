@@ -18,32 +18,39 @@ const bankDetailsSchema = z.object({
 });
 
 export async function lookupSwiftCode(prevState: any, formData: FormData) {
-  const swiftCode = formData.get("swiftCode");
-  try {
-    swiftCodeSchema.parse(swiftCode);
-  } catch (error) {
-    return { error: "Invalid SWIFT code format" };
-  }
-
-  try {
-    // Replace this URL with your actual API endpoint
-    const response = await fetch("https://ifsc-backend.vercel.app/api/swift", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ swiftCode }),
-    });
-
-    if (!response.ok) {
-      throw new Error("Failed to fetch bank details");
+  if (formData.get) {
+    const swiftCode = formData.get("swiftCode");
+    try {
+      swiftCodeSchema.parse(swiftCode);
+    } catch (error) {
+      return { error: "Invalid SWIFT code format" };
     }
 
-    const data = await response.json();
-    const validatedData = bankDetailsSchema.parse(data);
-    return { data: validatedData };
-  } catch (error) {
-    console.error("Error fetching bank details:", error);
-    return { error: "Failed to fetch bank details. Please try again." };
+    if (prevState && prevState.SWIFT ? prevState.SWIFT !== swiftCode : true) {
+      try {
+        // Replace this URL with your actual API endpoint
+        const response = await fetch(
+          "https://ifsc-backend.vercel.app/api/swift",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ swiftCode }),
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch bank details");
+        }
+
+        const data = await response.json();
+        const validatedData = bankDetailsSchema.parse(data);
+        return { data: validatedData };
+      } catch (error) {
+        console.error("Error fetching bank details:", error);
+        return { error: "Failed to fetch bank details. Please try again." };
+      }
+    }
   }
 }
