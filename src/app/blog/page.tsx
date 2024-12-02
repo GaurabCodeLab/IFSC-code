@@ -1,22 +1,24 @@
 import { Metadata } from "next";
-import BlogListingPage from "./BlogListingPage";
-import { getAllBlogPosts } from "./lib/blog";
-
+import BlogPost from "./BlogPost";
+import { getAllBlogPosts } from "./lib/api";
 export const metadata: Metadata = {
-  title: "Banking Blog | Latest Insights on IFSC, MICR, and SWIFT Codes",
+  title: "Our Blog | Your Company Name",
   description:
-    "Explore our latest articles about banking codes, financial transactions, and banking technology in India.",
+    "Read our latest articles and stay up to date with industry trends and insights.",
   openGraph: {
-    title: "Banking Blog | Latest Insights on IFSC, MICR, and SWIFT Codes",
+    title: "Our Blog | Your Company Name",
     description:
-      "Explore our latest articles about banking codes, financial transactions, and banking technology in India.",
+      "Read our latest articles and stay up to date with industry trends and insights.",
     type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Banking Blog | Latest Insights on IFSC, MICR, and SWIFT Codes",
-    description:
-      "Explore our latest articles about banking codes, financial transactions, and banking technology in India.",
+    url: "https://yourwebsite.com/blog",
+    images: [
+      {
+        url: "https://yourwebsite.com/images/blog-og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Our Blog",
+      },
+    ],
   },
 };
 
@@ -24,9 +26,13 @@ export default async function BlogPage() {
   const posts = await getAllBlogPosts();
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-8 text-center">Banking Blog</h1>
-      <BlogListingPage posts={posts} />
-    </div>
+    <main className="container mx-auto px-4 py-8">
+      <h1 className="text-4xl font-bold mb-8 text-center">Our Blog</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {posts.map((post) => (
+          <BlogPost key={post.slug} post={post} />
+        ))}
+      </div>
+    </main>
   );
 }
