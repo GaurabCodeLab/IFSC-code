@@ -26,7 +26,7 @@ export async function generateMetadata({
       url: `https://yourwebsite.com/blog/${post.slug}`,
       images: [
         {
-          url: post.coverImage || "", // Handle undefined coverImage
+          url: post.coverImage,
           width: 1200,
           height: 630,
           alt: post.title,
@@ -36,37 +36,85 @@ export async function generateMetadata({
   };
 }
 
-function formatText(
-  text: string,
-  format?: { bold?: string[]; italic?: string[] }
-) {
-  if (!format) return text;
-
-  let formattedText = text;
-
-  if (format.bold) {
-    format.bold.forEach((boldText) => {
-      formattedText = formattedText.replace(
-        new RegExp(`\\b${boldText}\\b`, "g"),
-        `<strong>${boldText}</strong>`
-      );
-    });
-  }
-
-  if (format.italic) {
-    format.italic.forEach((italicText) => {
-      formattedText = formattedText.replace(
-        new RegExp(`\\b${italicText}\\b`, "g"),
-        `<em>${italicText}</em>`
-      );
-    });
-  }
-
-  return formattedText;
-}
-
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const post = await getBlogPostBySlug(params.slug);
+
+  const renderContent = (block: any, index: number) => {
+    switch (block.type) {
+      case "paragraph":
+        return (
+          <p key={index} className="mb-4">
+            {block.content}
+          </p>
+        );
+      case "heading":
+        return (
+          <h2 key={index} className="text-2xl font-semibold mt-6 mb-4">
+            {block.content}
+          </h2>
+        );
+      case "subheading":
+        return (
+          <h3 key={index} className="text-xl font-semibold mt-4 mb-2">
+            {block.content}
+          </h3>
+        );
+      case "list":
+        return (
+          <ul key={index} className="list-disc pl-6 my-4">
+            {block.content.map((item: string, i: number) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
+        );
+      case "image":
+        const [src, alt] = block.content.split("|");
+        return (
+          <figure key={index} className="my-4">
+            <Image
+              src={src}
+              alt={alt}
+              width={800}
+              height={400}
+              layout="responsive"
+              className="rounded-lg"
+            />
+            <figcaption className="text-center text-sm text-gray-500 mt-2">
+              {alt}
+            </figcaption>
+          </figure>
+        );
+      case "table":
+        return (
+          <div key={index} className="overflow-x-auto my-4">
+            <table className="min-w-full bg-white border border-gray-300">
+              <thead>
+                <tr className="bg-gray-100">
+                  {block.content[0].map((header: string, i: number) => (
+                    <th key={i} className="py-2 px-4 border-b">
+                      {header}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {block.content.slice(1).map((row: string[], i: number) => (
+                  <tr key={i}>
+                    {row.map((cell: string, j: number) => (
+                      <td key={j} className="py-2 px-4 border-b">
+                        {cell}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        );
+      default:
+        return null;
+    }
+  };
 
   return (
     <main className="container mx-auto px-4 py-8">
@@ -87,94 +135,17 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               {new Date(post.date).toLocaleDateString()}
             </time>
           </div>
-          <figure>
-            {post.coverImage ? (
-              <Image
-                src={post.coverImage}
-                alt={post.title}
-                width={1200}
-                height={630}
-                className="w-full h-auto rounded-lg shadow-md"
-              />
-            ) : (
-              <div className="w-full h-96 bg-gray-200 rounded-lg" />
-            )}
-            <figcaption className="text-center text-sm text-gray-500 mt-2">
-              {post.title} - Featured Image
-            </figcaption>
-          </figure>
+          <Image
+            src={post.coverImage}
+            alt={post.title}
+            width={1200}
+            height={630}
+            layout="responsive"
+            className="rounded-lg shadow-md"
+          />
         </header>
         <section className="prose prose-lg max-w-none">
-          {post.content.map((block, index) => {
-            switch (block.type) {
-              case "paragraph":
-                const paragraphContent = Array.isArray(block.content)
-                  ? block.content.join(" ")
-                  : block.content;
-                const format = (block as any).format; // Safely access format
-                return (
-                  <p
-                    key={index}
-                    dangerouslySetInnerHTML={{
-                      __html: formatText(paragraphContent, format),
-                    }}
-                  />
-                );
-              case "heading":
-                return (
-                  <h2 key={index} className="text-2xl font-semibold mt-6 mb-4">
-                    {block.content}
-                  </h2>
-                );
-              case "subheading":
-                return (
-                  <h3 key={index} className="text-xl font-semibold mt-4 mb-2">
-                    {block.content}
-                  </h3>
-                );
-              case "list":
-                return (
-                  <ul
-                    key={index}
-                    className="list-disc pl-6 my-4"
-                    dangerouslySetInnerHTML={{
-                      __html: block.content as string,
-                    }}
-                  />
-                );
-              case "image":
-                if (typeof block.content === "string") {
-                  const [src, alt] = block.content.split("|");
-                  return (
-                    <figure key={index} className="my-4">
-                      <Image
-                        src={src}
-                        alt={alt}
-                        width={600}
-                        height={400}
-                        className="w-full h-auto rounded-lg"
-                      />
-                      <figcaption className="text-center text-sm text-gray-500 mt-2">
-                        {alt}
-                      </figcaption>
-                    </figure>
-                  );
-                }
-                return null;
-              case "navigation":
-                return (
-                  <nav
-                    key={index}
-                    className="my-4"
-                    dangerouslySetInnerHTML={{
-                      __html: block.content as string,
-                    }}
-                  />
-                );
-              default:
-                return null;
-            }
-          })}
+          {post.content.map((block, index) => renderContent(block, index))}
         </section>
       </article>
     </main>
