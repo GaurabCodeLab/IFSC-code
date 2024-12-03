@@ -74,8 +74,8 @@ export default function IFSCLookup() {
               <li>Last 6 characters (CCXXX): Branch code</li>
             </ul>
             <p>
-              <strong>Example:</strong> SBIN0000001 (State Bank of India, Main
-              Branch, Mumbai)
+              <strong>Example:</strong> AIRP0000001 (
+              <strong>airtel payment bank ifsc code</strong>)
             </p>
           </CardContent>
         </Card>

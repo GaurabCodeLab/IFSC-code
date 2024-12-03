@@ -89,7 +89,6 @@ export default function BankBranchLookup() {
       setIsLoadingDetails(true);
       try {
         const data = await getBranchDetails(bankName, branchName);
-        console.log("data hai", data);
         setBranchDetails(data);
       } catch (error) {
         console.error("Error fetching branch details:", error);
@@ -176,8 +175,8 @@ export default function BankBranchLookup() {
                 <li>Last 6 characters (CCXXX): Branch code</li>
               </ul>
               <p>
-                <strong>Example:</strong> ABHY0065012 (Abhyudaya Co-operative
-                Bank, WADALA Branch)
+                <strong>Example:</strong> BARB0BALESH (
+                <strong>bank of baroda ifsc code</strong>, BALESHWAR Branch)
               </p>
             </CardContent>
           </Card>

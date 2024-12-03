@@ -54,7 +54,7 @@ export default function MICRLookup() {
       <div className="grid md:grid-cols-2 gap-6">
         <Card>
           <CardHeader>
-            <CardTitle>What is a MICR code?</CardTitle>
+            <CardTitle>What is MICR code?</CardTitle>
           </CardHeader>
           <CardContent>
             <p className="mb-4">
@@ -71,8 +71,8 @@ export default function MICRLookup() {
               <li>Last 3 digits (SSS): Branch code</li>
             </ul>
             <p>
-              <strong>Example:</strong> 400002002 (State Bank of India, Main
-              Branch, Mumbai)
+              <strong>Example:</strong> 248026002 (
+              <strong>union bank micr code</strong> ,Branch-Dehradun)
             </p>
             <p className="mt-4">
               MICR codes are printed on cheques using special magnetic ink,
