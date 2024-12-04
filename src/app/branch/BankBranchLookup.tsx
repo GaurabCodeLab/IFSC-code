@@ -138,7 +138,7 @@ export default function BankBranchLookup() {
     label: string,
     value: string | number | boolean | undefined
   ) => {
-    if (value !== undefined && value !== "") {
+    if (value && value !== "N/A") {
       return (
         <p>
           <strong>{label}:</strong> {value.toString()}
@@ -199,8 +199,8 @@ export default function BankBranchLookup() {
                 <li>Last 3 digits (SSS): Branch code</li>
               </ul>
               <p>
-                <strong>Example:</strong> 400065012 (Abhyudaya Co-operative
-                Bank, WADALA Branch)
+                <strong>Example:</strong> 110002052 (
+                <strong>sbi micr code</strong>, JAHANGIRPURI Branch)
               </p>
               <p className="mt-4">
                 MICR codes are printed on cheques using special magnetic ink,
