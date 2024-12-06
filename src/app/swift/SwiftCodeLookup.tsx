@@ -29,10 +29,6 @@ export default function SwiftCodeLookup() {
   const [swiftCode, setSwiftCode] = useState("");
   const [state, formAction] = useFormState(lookupSwiftCode, null);
 
-  const handleSubmit = async (formData: FormData) => {
-    await formAction(formData);
-  };
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.toUpperCase().slice(0, 11);
     setSwiftCode(value);
@@ -43,16 +39,6 @@ export default function SwiftCodeLookup() {
     formAction({ type: "reset" } as any);
   };
 
-  const renderBankDetail = (label: string, value: string | undefined) => {
-    if (value && value !== "N/A") {
-      return (
-        <p>
-          <strong>{label}:</strong> {value}
-        </p>
-      );
-    }
-    return null;
-  };
   return (
     <div className="w-full max-w-6xl mx-auto p-4">
       <h1 className="text-3xl font-bold mb-6 text-center">SWIFT Code Lookup</h1>
@@ -166,16 +152,13 @@ function ResultsArea({ state }: { state: any }) {
       <div className="mt-4 space-y-2" aria-live="polite">
         <h2 className="text-xl font-semibold">Bank Details</h2>
         <div className="grid gap-2">
-          {renderBankDetail("Bank", state.data.BANK)}
-          {renderBankDetail("Branch", state.data.BRANCH)}
-          {renderBankDetail("MICR", state.data.MICR)}
+          {renderBankDetail("Bank", state.data.bank_name)}
+          {state.data.branch && renderBankDetail("Branch", state.data.branch)}
+          {renderBankDetail("City", state.data.city)}
           {renderBankDetail("IFSC", state.data.IFSC)}
-          {renderBankDetail("Swift Code", state.data.SWIFT)}
-          {renderBankDetail("Branch Code", state.data.BRANCH_CODE)}
-          {renderBankDetail("Contact", state.data.CONTACT)}
-          {renderBankDetail("Address", state.data.ADDRESS)}
-          {renderBankDetail("City", state.data.CITY)}
-          {renderBankDetail("State", state.data.STATE)}
+          {renderBankDetail("Country", state.data.country)}
+          {renderBankDetail("Country Code", state.data.country_code)}
+          {renderBankDetail("Swift Code", state.data.swift_code)}
         </div>
       </div>
     );

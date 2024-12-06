@@ -5,16 +5,12 @@ import { z } from "zod";
 const swiftCodeSchema = z.string().regex(/^[A-Z]{6}[A-Z0-9]{2}([A-Z0-9]{3})?$/);
 
 const bankDetailsSchema = z.object({
-  BANK: z.string(),
-  SWIFT: z.string(),
-  CITY: z.string(),
-  BRANCH: z.string().optional(),
-  ADDRESS: z.string(),
-  IFSC: z.string().optional(),
-  MICR: z.number().optional(),
-  BRANCH_CODE: z.number().optional(),
-  CONTACT: z.string().optional(),
-  STATE: z.string(),
+  bank_name: z.string(),
+  city: z.string(),
+  country: z.string(),
+  country_code: z.string(),
+  swift_code: z.string(),
+  branch: z.string().optional(),
 });
 
 export async function lookupSwiftCode(prevState: any, formData: FormData) {
@@ -30,13 +26,13 @@ export async function lookupSwiftCode(prevState: any, formData: FormData) {
       try {
         // Replace this URL with your actual API endpoint
         const response = await fetch(
-          "https://ifsc-backend.vercel.app/api/swift",
+          `https://api.api-ninjas.com/v1/swiftcode?swift=${swiftCode}`,
           {
-            method: "POST",
+            method: "GET",
             headers: {
               "Content-Type": "application/json",
+              "X-Api-Key": "DXM6GzhpXoYj3bIZaOZ24A==iinGYOxOED2YVsBq",
             },
-            body: JSON.stringify({ swiftCode }),
           }
         );
 
@@ -45,11 +41,11 @@ export async function lookupSwiftCode(prevState: any, formData: FormData) {
         }
 
         const data = await response.json();
-        const validatedData = bankDetailsSchema.parse(data);
+        const validatedData = bankDetailsSchema.parse(data[0]);
         return { data: validatedData };
       } catch (error) {
         console.error("Error fetching bank details:", error);
-        return { error: "Failed to fetch bank details. Please try again." };
+        return { error: "Failed to fetch bank details." };
       }
     }
   }

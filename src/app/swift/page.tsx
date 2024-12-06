@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     "Enter a SWIFT code to quickly find bank details including bank name, address, and more. Essential for international wire transfers.",
   keywords:
-    "SWIFT code, BIC, bank lookup, international transfer, wire transfer",
+    "sbi swift code,hdfc bank swift code, swift code of sbi, SWIFT code, BIC, bank lookup, international transfer, wire transfer",
 };
 
 export default function SwiftCodeLookupPage() {
