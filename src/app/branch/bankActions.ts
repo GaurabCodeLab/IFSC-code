@@ -19,10 +19,10 @@ interface BranchDetails {
   MICR: string;
   ADDRESS: string;
 }
-
+const baseUrl = process.env.API_BASE_URL;
 export async function getBanks(search: string = ""): Promise<Bank[]> {
   try {
-    const response = await fetch(`http://localhost:3001/api/branch/banks`, {
+    const response = await fetch(`${baseUrl}/api/branch/banks`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -48,7 +48,7 @@ export async function getBranches(
   search: string = ""
 ): Promise<Branch[]> {
   try {
-    const response = await fetch("http://localhost:3001/api/branch/branches", {
+    const response = await fetch(`${baseUrl}/api/branch/branches`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -74,7 +74,7 @@ export async function getBranchDetails(
   BRANCH: string
 ): Promise<BranchDetails> {
   try {
-    const response = await fetch("http://localhost:3001/api/branch", {
+    const response = await fetch(`${baseUrl}/api/branch`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

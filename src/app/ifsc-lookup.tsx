@@ -39,17 +39,6 @@ export default function IFSCLookup() {
     formAction({ type: "reset" } as any);
   };
 
-  const renderBankDetail = (label: string, value: string | undefined) => {
-    if (value && value !== "N/A") {
-      return (
-        <p>
-          <strong>{label}:</strong> {value}
-        </p>
-      );
-    }
-    return null;
-  };
-
   return (
     <div className="w-full max-w-6xl mx-auto p-4">
       <h1 className="text-3xl font-bold mb-6 text-center">IFSC Code Lookup</h1>
@@ -76,6 +65,11 @@ export default function IFSCLookup() {
             <p>
               <strong>Example:</strong> AIRP0000001 (
               <strong>airtel payment bank ifsc code</strong>)
+            </p>
+            <p>
+              The IFSC (Indian Financial System Code) uniquely identifies bank
+              branches for electronic payments in India, ensuring secure
+              transactions.
             </p>
           </CardContent>
         </Card>

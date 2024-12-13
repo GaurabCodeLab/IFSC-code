@@ -3,6 +3,7 @@
 import { z } from "zod";
 
 const micrSchema = z.string().regex(/^\d{9}$/);
+const baseUrl = process.env.API_BASE_URL;
 
 export async function lookupMICR(prevState: any, formData: FormData) {
   if (formData.get) {
@@ -19,18 +20,16 @@ export async function lookupMICR(prevState: any, formData: FormData) {
 
       try {
         // Note: This is a placeholder URL. Replace with the actual API endpoint for MICR lookup
-        const response = await fetch(
-          `https://ifsc-backend.vercel.app/api/micr/${micr}`
-        );
+        const response = await fetch(`${baseUrl}/api/micr/${micr}`);
 
         if (!response.ok) {
-          throw new Error("Failed to fetch bank details");
+          throw new Error("Failed to fetch bank d Please try again.etails");
         }
 
         const data = await response.json();
         return { data };
       } catch (error) {
-        return { error: "Failed to fetch bank details. Please try again." };
+        return { error: "Failed to fetch bank details." };
       }
     }
   }

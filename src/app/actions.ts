@@ -1,6 +1,7 @@
 "use server";
 
 import { z } from "zod";
+import { IFSC_API } from "@/utils/constants";
 
 const ifscSchema = z.string().regex(/^[A-Z]{4}0[A-Z0-9]{6}$/);
 
@@ -17,7 +18,7 @@ export async function lookupIFSC(prevState: any, formData: FormData) {
         return { error: "Invalid IFSC code format" };
       }
       try {
-        const response = await fetch(`https://ifsc.razorpay.com/${ifsc}`);
+        const response = await fetch(IFSC_API + ifsc);
 
         if (!response.ok) {
           throw new Error("Failed to fetch bank details");
@@ -26,7 +27,7 @@ export async function lookupIFSC(prevState: any, formData: FormData) {
         const data = await response.json();
         return { data };
       } catch (error) {
-        return { error: "Failed to fetch bank details. Please try again." };
+        return { error: "Failed to fetch bank details." };
       }
     }
   }

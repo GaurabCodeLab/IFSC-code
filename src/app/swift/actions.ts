@@ -1,6 +1,7 @@
 "use server";
 
 import { z } from "zod";
+import { SWIFT_API } from "@/utils/constants";
 
 const swiftCodeSchema = z.string().regex(/^[A-Z]{6}[A-Z0-9]{2}([A-Z0-9]{3})?$/);
 
@@ -25,16 +26,13 @@ export async function lookupSwiftCode(prevState: any, formData: FormData) {
     if (prevState && prevState.SWIFT ? prevState.SWIFT !== swiftCode : true) {
       try {
         // Replace this URL with your actual API endpoint
-        const response = await fetch(
-          `https://api.api-ninjas.com/v1/swiftcode?swift=${swiftCode}`,
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              "X-Api-Key": "DXM6GzhpXoYj3bIZaOZ24A==iinGYOxOED2YVsBq",
-            },
-          }
-        );
+        const response = await fetch(SWIFT_API + swiftCode, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "X-Api-Key": String(process.env.SWIFT_API_KEY),
+          },
+        });
 
         if (!response.ok) {
           throw new Error("Failed to fetch bank details");
