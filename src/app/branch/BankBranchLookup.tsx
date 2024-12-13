@@ -153,7 +153,7 @@ export default function BankBranchLookup() {
       <h1 className="text-3xl font-bold mb-6 text-center">
         Bank Branch Lookup
       </h1>
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="md:grid md:grid-cols-2 gap-6 flex flex-col-reverse">
         <div className="space-y-6">
           <Card>
             <CardHeader>
