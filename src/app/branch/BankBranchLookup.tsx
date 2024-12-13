@@ -12,7 +12,6 @@ import {
   CardDescription,
 } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Loader2 } from "lucide-react";
 
 interface Option {
   value: string;
@@ -20,22 +19,22 @@ interface Option {
 }
 
 interface BranchDetails {
-  BANK: string;
-  IFSC: string;
-  BRANCH: string;
-  CENTRE: string;
-  DISTRICT: string;
-  STATE: string;
-  ADDRESS: string;
-  CONTACT: string;
-  IMPS: boolean;
-  RTGS: boolean;
-  CITY: string;
-  ISO3166: string;
-  NEFT: boolean;
-  MICR: number;
-  UPI: boolean;
-  SWIFT: string;
+  BANK?: string;
+  IFSC?: string;
+  BRANCH?: string;
+  CENTRE?: string;
+  DISTRICT?: string;
+  STATE?: string;
+  ADDRESS?: string;
+  CONTACT?: string;
+  IMPS?: boolean;
+  RTGS?: boolean;
+  CITY?: string;
+  ISO3166?: string;
+  NEFT?: boolean;
+  MICR?: string; // Updated: MICR is now a string
+  UPI?: boolean;
+  SWIFT?: string;
 }
 
 export default function BankBranchLookup() {
@@ -89,9 +88,10 @@ export default function BankBranchLookup() {
       setIsLoadingDetails(true);
       try {
         const data = await getBranchDetails(bankName, branchName);
-        setBranchDetails(data);
+        setBranchDetails(data as BranchDetails);
       } catch (error) {
         console.error("Error fetching branch details:", error);
+        setBranchDetails(null);
       } finally {
         setIsLoadingDetails(false);
       }
@@ -138,7 +138,7 @@ export default function BankBranchLookup() {
     label: string,
     value: string | number | boolean | undefined
   ) => {
-    if (value && value !== "N/A") {
+    if (value !== undefined && value !== null && value !== "N/A") {
       return (
         <p>
           <strong>{label}:</strong> {value.toString()}
@@ -238,29 +238,27 @@ export default function BankBranchLookup() {
                 className="react-select-container"
                 classNamePrefix="react-select"
               />
-              {true && (
-                <div className="space-y-2">
-                  <label
-                    htmlFor="branch-select"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Select a branch
-                  </label>
-                  <Select
-                    id="branch-select"
-                    options={branches}
-                    value={selectedBranch}
-                    onChange={handleBranchChange}
-                    onInputChange={setBranchSearch}
-                    placeholder="Search and select a branch"
-                    isClearable
-                    isSearchable
-                    isLoading={isLoadingBranches}
-                    className="react-select-container"
-                    classNamePrefix="react-select"
-                  />
-                </div>
-              )}
+              <div className="space-y-2">
+                <label
+                  htmlFor="branch-select"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Select a branch
+                </label>
+                <Select
+                  id="branch-select"
+                  options={branches}
+                  value={selectedBranch}
+                  onChange={handleBranchChange}
+                  onInputChange={setBranchSearch}
+                  placeholder="Search and select a branch"
+                  isClearable
+                  isSearchable
+                  isLoading={isLoadingBranches}
+                  className="react-select-container"
+                  classNamePrefix="react-select"
+                />
+              </div>
               {selectedBank && selectedBranch && (
                 <Card>
                   <CardHeader>
