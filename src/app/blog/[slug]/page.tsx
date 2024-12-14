@@ -76,7 +76,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               alt={alt}
               width={800}
               height={400}
-              layout="responsive"
               className="rounded-lg"
             />
             <figcaption className="text-center text-sm text-gray-500 mt-2">
@@ -140,7 +139,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             alt={post.title}
             width={1200}
             height={630}
-            layout="responsive"
             className="rounded-lg shadow-md"
           />
         </header>
