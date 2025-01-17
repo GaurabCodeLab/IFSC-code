@@ -5,17 +5,19 @@ import { getBlogPostBySlug } from "../lib/api";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 
+// Define the types for params and searchParams
 type Params = {
   slug: string;
 };
 
 type Props = {
-  params: Promise<Params>; // Updated to accommodate async behavior
-  searchParams: { [key: string]: string | string[] | undefined };
+  params: Promise<Params>; // Async params type
+  searchParams: Promise<Record<string, string | string[] | undefined>>; // Async searchParams type
 };
 
+// Generate metadata for SEO
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const resolvedParams = await params; // Resolve params here if necessary
+  const resolvedParams = await params; // Resolve params
   const post = await getBlogPostBySlug(resolvedParams.slug);
 
   return {
@@ -38,12 +40,88 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function BlogPostPage({ params }: Props) {
-  const resolvedParams = await params; // Resolve params for usage
+// Render the blog post page
+export default async function BlogPostPage({ params, searchParams }: Props) {
+  const resolvedParams = await params; // Resolve params
+  const resolvedSearchParams = await searchParams; // Resolve searchParams if needed
+
   const post = await getBlogPostBySlug(resolvedParams.slug);
 
-  const renderContent = (block: any, index: number) => {
-    // (Content rendering logic stays the same)
+  // Function to render content blocks dynamically
+  const renderContent = (block: any, index: number): React.ReactNode => {
+    switch (block.type) {
+      case "paragraph":
+        return (
+          <p key={index} className="mb-4">
+            {block.content}
+          </p>
+        );
+      case "heading":
+        return (
+          <h2 key={index} className="text-2xl font-semibold mt-6 mb-4">
+            {block.content}
+          </h2>
+        );
+      case "subheading":
+        return (
+          <h3 key={index} className="text-xl font-semibold mt-4 mb-2">
+            {block.content}
+          </h3>
+        );
+      case "list":
+        return (
+          <ul key={index} className="list-disc pl-6 my-4">
+            {block.content.map((item: string, i: number) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
+        );
+      case "image":
+        const [src, alt] = block.content.split("|");
+        return (
+          <figure key={index} className="my-4">
+            <Image
+              src={src || "/placeholder.svg"}
+              alt={alt}
+              width={800}
+              height={400}
+              className="rounded-lg"
+            />
+            <figcaption className="text-center text-sm text-gray-500 mt-2">
+              {alt}
+            </figcaption>
+          </figure>
+        );
+      case "table":
+        return (
+          <div key={index} className="overflow-x-auto my-4">
+            <table className="min-w-full bg-white border border-gray-300">
+              <thead>
+                <tr className="bg-gray-100">
+                  {block.content[0].map((header: string, i: number) => (
+                    <th key={i} className="py-2 px-4 border-b">
+                      {header}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {block.content.slice(1).map((row: string[], i: number) => (
+                  <tr key={i}>
+                    {row.map((cell: string, j: number) => (
+                      <td key={j} className="py-2 px-4 border-b">
+                        {cell}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        );
+      default:
+        return null; // Return null for unsupported block types
+    }
   };
 
   return (
@@ -74,9 +152,7 @@ export default async function BlogPostPage({ params }: Props) {
           />
         </header>
         <section className="prose prose-lg max-w-none">
-          {post.content.map(
-            (block, index) => renderContent(block, index) ?? null
-          )}
+          {post.content.map((block, index) => renderContent(block, index))}
         </section>
       </article>
     </main>
