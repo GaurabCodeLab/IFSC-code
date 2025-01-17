@@ -5,15 +5,16 @@ import { getBlogPostBySlug } from "../lib/api";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 
-interface BlogPostPageProps {
-  params: {
-    slug: string;
-  };
-}
+type Params = {
+  slug: string;
+};
 
-export async function generateMetadata({
-  params,
-}: BlogPostPageProps): Promise<Metadata> {
+type Props = {
+  params: Params;
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getBlogPostBySlug(params.slug);
 
   return {
@@ -36,7 +37,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function BlogPostPage({ params }: BlogPostPageProps) {
+export default async function BlogPostPage({ params }: Props) {
   const post = await getBlogPostBySlug(params.slug);
 
   const renderContent = (block: any, index: number) => {
