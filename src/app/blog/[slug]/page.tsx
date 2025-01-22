@@ -21,13 +21,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getBlogPostBySlug(resolvedParams.slug);
 
   return {
-    title: `${post.title} | Your Company Name`,
+    title: `${post.title} | BankInfo Hub`,
     description: post.excerpt,
     openGraph: {
-      title: `${post.title} | Your Company Name`,
+      title: `${post.title} | BankInfo Hub`,
       description: post.excerpt,
       type: "article",
-      url: `https://yourwebsite.com/blog/${post.slug}`,
+      url: `https://ifsccodeb.com/blog/${post.slug}`,
       images: [
         {
           url: post.coverImage,
