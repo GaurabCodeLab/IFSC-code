@@ -152,7 +152,6 @@ function ResultsArea({ state }: { state: any }) {
       <div className="mt-4 space-y-2" aria-live="polite">
         <h2 className="text-xl font-semibold">Bank Details</h2>
         <div className="grid gap-2">
-          {renderBankDetail("Bank", state.data.bank_name)}
           {state.data.branch && renderBankDetail("Branch", state.data.branch)}
           {renderBankDetail("City", state.data.city)}
           {renderBankDetail("IFSC", state.data.IFSC)}

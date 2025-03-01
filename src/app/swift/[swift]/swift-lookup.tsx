@@ -141,10 +141,9 @@ function ResultsArea({
   return (
     <div className="mt-0 space-y-2" aria-live="polite">
       <h2 className="text-xl font-semibold">
-        Swift Code: {branchDetails.swift_code}, {branchDetails.bank_name}
+        Swift Code: {branchDetails.swift_code}
       </h2>
       <div className="grid gap-2">
-        {renderBankDetail("Bank", branchDetails.bank_name)}
         {renderBankDetail("Branch", branchDetails.branch)}
         {renderBankDetail("City", branchDetails.city)}
         {renderBankDetail("IFSC", branchDetails.IFSC)}
