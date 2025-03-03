@@ -6,9 +6,8 @@ interface BlogPostProps {
     slug: string;
     title: string;
     excerpt: string;
-    date: string;
-    author: string;
     coverImage: string;
+    coverImage2?: string;
   };
 }
 
@@ -17,7 +16,7 @@ export default function BlogPost({ post }: BlogPostProps) {
     <article className="bg-white rounded-lg shadow-md overflow-hidden">
       <Link href={`/blog/${post.slug}`}>
         <Image
-          src={post.coverImage}
+          src={post.coverImage2 ? post.coverImage2 : post.coverImage}
           alt={post.title}
           width={600}
           height={400}
@@ -35,14 +34,6 @@ export default function BlogPost({ post }: BlogPostProps) {
         <div className="mb-4">
           <p className="text-gray-600">{post.excerpt}</p>
         </div>
-        <footer className="flex justify-between items-center text-sm text-gray-500">
-          <address className="not-italic">
-            By <span className="font-semibold">{post.author}</span>
-          </address>
-          <time dateTime={post.date}>
-            {new Date(post.date).toLocaleDateString()}
-          </time>
-        </footer>
       </div>
     </article>
   );

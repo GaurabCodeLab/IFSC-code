@@ -32,15 +32,6 @@ export const metadata: Metadata = {
     ],
     url: "https://ifsccodeb.com/",
   },
-  twitter: {
-    title: "ifsc code search",
-    description:
-      "Enter your IFSC code to quickly find bank details including branch name, address, and more.",
-    images: [
-      "https://res.cloudinary.com/dqquvmo2p/image/upload/v1737315122/ifsc_vgmhx4.webp",
-    ],
-    card: "summary_large_image",
-  },
 };
 
 export default function RootLayout({

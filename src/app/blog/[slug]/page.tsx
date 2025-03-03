@@ -21,10 +21,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getBlogPostBySlug(resolvedParams.slug);
 
   return {
-    title: `${post.title} | BankInfo Hub`,
+    title: post.title,
     description: post.excerpt,
+    keywords: post.keywords,
     openGraph: {
-      title: `${post.title} | BankInfo Hub`,
+      title: `${post.title}`,
       description: post.excerpt,
       type: "article",
       url: `https://ifsccodeb.com/blog/${post.slug}`,
@@ -52,21 +53,31 @@ export default async function BlogPostPage({ params, searchParams }: Props) {
     switch (block.type) {
       case "paragraph":
         return (
-          <p key={index} className="mb-4">
+          <p
+            key={index}
+            className={block.customStyle ? block.customStyle : "mb-4"}
+          >
             {block.content}
           </p>
         );
       case "heading":
         return (
-          <h2 key={index} className="text-2xl font-semibold mt-6 mb-4">
+          <h1 key={index} className="text-2xl font-semibold mt-6 mb-4">
             {block.content}
-          </h2>
+          </h1>
         );
       case "subheading":
         return (
-          <h3 key={index} className="text-xl font-semibold mt-4 mb-2">
+          <h2
+            key={index}
+            className={
+              block.customStyle
+                ? block.customStyle
+                : "text-xl font-semibold mt-4 mb-2"
+            }
+          >
             {block.content}
-          </h3>
+          </h2>
         );
       case "list":
         return (
@@ -76,6 +87,39 @@ export default async function BlogPostPage({ params, searchParams }: Props) {
             ))}
           </ul>
         );
+      case "section":
+        return (
+          <section
+            key={index}
+            id={block.content.id ? block.content.id : " "}
+            className=""
+          >
+            <h2 className="text-2xl font-bold mb-4">{block.content.heading}</h2>
+            <p>{block.content.p1}</p>
+            <Image
+              src={block.content.imgLink}
+              width="800"
+              height="100"
+              alt="Sadhus gathering at Maha Kumbh Mela 2025"
+              className="object-cover my-8 rounded-md"
+            />
+            <p>{block.content.p2}</p>
+          </section>
+        );
+      case "listWithLink":
+        return (
+          <ul key={index} className="list-disc pl-6 my-4">
+            {block.content.map((item: any, i: number) => (
+              <li key={i}>
+                {" "}
+                <a href={item.to} className="text-primary hover:underline">
+                  {item.text}
+                </a>
+              </li>
+            ))}
+          </ul>
+        );
+
       case "image":
         const [src, alt] = block.content.split("|");
         return (
@@ -119,6 +163,8 @@ export default async function BlogPostPage({ params, searchParams }: Props) {
             </table>
           </div>
         );
+      case "mahakhumb":
+        return block.content();
       default:
         return null; // Return null for unsupported block types
     }
@@ -127,22 +173,17 @@ export default async function BlogPostPage({ params, searchParams }: Props) {
   return (
     <main className="container mx-auto px-4 py-8">
       <Link href="/blog" passHref>
-        <Button variant="ghost" className="mb-4 flex items-center">
+        <Button
+          variant="ghost"
+          className="mb-4 flex items-center border bg-slate-400"
+        >
           <ArrowLeft className="mr-2 h-4 w-4" />
           Back to Blog
         </Button>
       </Link>
-      <article className="max-w-3xl mx-auto">
+      <article className="max-w-4xl mx-auto">
         <header className="mb-8">
           <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
-          <div className="flex justify-between items-center text-gray-500 mb-4">
-            <address className="not-italic">
-              By <span className="font-semibold">{post.author}</span>
-            </address>
-            <time dateTime={post.date}>
-              {new Date(post.date).toLocaleDateString()}
-            </time>
-          </div>
           <Image
             src={post.coverImage || "/placeholder.svg"}
             alt={post.title}

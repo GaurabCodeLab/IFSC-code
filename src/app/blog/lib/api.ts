@@ -1,32 +1,53 @@
+import MahaKhumb from "@/components/blogs/MahaKhumb";
 interface BlogPost {
   slug: string;
   title: string;
   excerpt: string;
-  date: string;
-  author: string;
+  // date: string;
+  // author: string;
   coverImage: string;
+  coverImage2?: string;
+  keywords?: string;
   content: BlogContent[];
-  metadata: {
-    description: string;
-    keywords: string[];
-    author: string;
-  };
 }
 
 type BlogContent =
-  | { type: "paragraph" | "heading" | "subheading"; content: string }
+  | {
+      type: "paragraph" | "heading" | "subheading";
+      content: string;
+      customStyle?: string;
+    }
   | { type: "list"; content: string[] }
+  | { type: "listWithLink"; content: any }
   | { type: "image"; content: string }
+  | { type: "section"; content: any }
+  | { type: "mahakhumb"; content: any }
   | { type: "table"; content: string[][] };
 
 const blogPosts: BlogPost[] = [
+  {
+    slug: "maha-kumbh-mela-2025",
+    title: "Maha Kumbh Mela 2025: Significance, Dates & Financial Insights",
+    excerpt:
+      "Explore the Maha Kumbh Mela 2025, a rare spiritual gathering in Prayagraj. This guide covers dates, significance, and economic impact, including the importance of IFSC codes for secure transactions. Learn about extensive banking services and the event's massive economic impact on India and Uttar Pradesh.",
+    coverImage:
+      "https://res.cloudinary.com/dqquvmo2p/image/upload/v1740851841/7f1gjoe_maha-kumbh_160x120_15_January_25_ioajo9.webp",
+    coverImage2:
+      "https://res.cloudinary.com/dqquvmo2p/image/upload/v1740843277/DALL_E_2025-03-01_21.04.22_-_A_grand_scene_of_the_Maha_Kumbh_Mela_featuring_millions_of_devotees_gathered_at_the_riverbanks_taking_a_holy_dip_in_the_sacred_river._Sadhus_holy_m_q6brd4.webp",
+    keywords:
+      "maha kumbh, maha kumbh mela, maha kumbh mela 2025, maha kumbh 2025, maha kumbh mela stampede, prayagraj maha kumbh mela, when is the next maha kumbh mela 144 years, maha kumbh mela 2025 date and place, after how many years maha kumbh is held, when is the next maha kumbh mela 144 years after 2025, why maha kumbh is celebrated, which among the following astronomical bodies location decides the timing of maha kumbh mela, when is maha kumbh mela 2025",
+    content: [
+      {
+        type: "mahakhumb",
+        content: MahaKhumb,
+      },
+    ],
+  },
   {
     slug: "understanding-micr-code-banking",
     title: "Understanding MICR Code: Essential Guide for Banking Transactions",
     excerpt:
       "Discover what MICR code means, its importance in banking, and how to find it on your cheque. Learn everything about MICR codes and their role in secure transactions.",
-    date: "2024-05-25",
-    author: "Financial Expert",
     coverImage:
       "https://res.cloudinary.com/dqquvmo2p/image/upload/v1733173292/DALL_E_2024-12-03_02.28.06_-_A_user-friendly_and_simple_illustration_for_a_blog_about_MICR_codes_in_banking._The_image_features_a_magnifying_glass_hovering_over_a_cheque_clearly_r5evzq.webp",
     content: [
@@ -189,27 +210,12 @@ const blogPosts: BlogPost[] = [
           "Remember, while MICR codes are crucial for cheque processing, they work alongside other banking codes like IFSC to ensure smooth, secure, and efficient banking operations in the digital age.",
       },
     ],
-    metadata: {
-      description:
-        "Learn what MICR code means, its importance in banking, and how to find it on your cheque. Discover everything about MICR codes and their role in secure transactions.",
-      keywords: [
-        "micr code",
-        "micr code on cheque",
-        "micr code in cheque",
-        "what is micr code",
-        "micr code of bank",
-        "micr code means",
-      ],
-      author: "Financial Expert",
-    },
   },
   {
     slug: "ifsc-code-guide-indian-banking",
     title: "IFSC Code: Complete Guide for Indian Banking Transactions",
     excerpt:
       "Learn about IFSC codes, their importance in online banking, and how to find them for major banks like SBI, Bank of Baroda, and more. Essential knowledge for seamless fund transfers.",
-    date: "2024-06-01",
-    author: "Banking Specialist",
     coverImage:
       "https://res.cloudinary.com/dqquvmo2p/image/upload/v1733083665/DALL_E_2024-12-02_01.37.27_-_An_illustrative_image_of_a_cheque_book_with_a_highlighted_IFSC_code_paired_with_digital_icons_representing_online_transactions_like_a_mobile_phone_a_xku7ch.webp",
     content: [
@@ -392,22 +398,6 @@ const blogPosts: BlogPost[] = [
           "Understanding IFSC codes is crucial for smooth online banking transactions in India. Whether you're using SBI, Bank of Baroda, Canara Bank, or any other bank, always ensure you have the correct IFSC code before initiating a fund transfer. By familiarizing yourself with IFSC codes, you can ensure faster, more secure, and error-free online banking experiences.",
       },
     ],
-    metadata: {
-      description:
-        "Comprehensive guide to IFSC codes in Indian banking. Learn about IFSC codes for SBI, Bank of Baroda, Canara Bank, and more. Essential for online transactions and fund transfers.",
-      keywords: [
-        "bank of baroda ifsc code",
-        "airtel payment bank ifsc code",
-        "sbi ifsc code",
-        "indian bank ifsc code",
-        "ifsc code sbi",
-        "canara bank ifsc code",
-        "india post payment bank ifsc code",
-        "union bank ifsc code",
-        "ifsc code bank of baroda",
-      ],
-      author: "Banking Specialist",
-    },
   },
 ];
 
