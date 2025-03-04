@@ -3,8 +3,6 @@ interface BlogPost {
   slug: string;
   title: string;
   excerpt: string;
-  // date: string;
-  // author: string;
   coverImage: string;
   coverImage2?: string;
   keywords?: string;

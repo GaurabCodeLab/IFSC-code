@@ -56,7 +56,7 @@ const MahaKhumb = () => {
 
       <section id="introduction">
         <h2 className="text-2xl font-bold mb-4">
-          Introduction to Maha Kumbh Mela
+          ~ Introduction to Maha Kumbh Mela
         </h2>
         <p>
           The Maha Kumbh Mela is one of the most significant religious
@@ -328,7 +328,7 @@ const MahaKhumb = () => {
               Digital Banking Facilities
             </h3>
             <p>
-              For the 2025 Maha Kumbh, expect enhanced digital banking
+              For the Maha Kumbh 2025, expect enhanced digital banking
               infrastructure:
             </p>
             <ul className="mt-3 space-y-1">

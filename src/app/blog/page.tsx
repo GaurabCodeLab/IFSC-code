@@ -3,13 +3,13 @@ import BlogPost from "./BlogPost";
 import { getAllBlogPosts } from "./lib/api";
 
 export const metadata: Metadata = {
-  title: "Our Blog | BankInfo Hub",
+  title: "Our Blogs | BankInfo Hub",
   description:
     "Read our latest articles and stay up to date with industry trends and insights.",
   keywords:
-    "IFSC, bank details, ifsc code kya hota hai, branch lookup, Indian Financial System Code, airtel payment bank ifsc code, bank of baroda ifsc code, sbi ifsc code, indian bank ifsc code, ifsc code sbi, canara bank ifsc code, india post payment bank ifsc code",
+    "airtel payment bank ifsc codec, maha kumbh, maha kumbh mela, maha kumbh mela 2025, bank of baroda ifsc code, ifsc code kya hai, how to check ifsc code, micr code on cheque, micr code kya hota hai, where is micr code on cheque",
   openGraph: {
-    title: "Our Blog | BankInfo Hub",
+    title: "Our Blogs | BankInfo Hub",
     description:
       "Read our latest articles and stay up to date with industry trends and insights.",
     type: "website",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
         url: "https://res.cloudinary.com/dqquvmo2p/image/upload/v1733082538/cover_u0ivck.webp",
         width: 1200,
         height: 630,
-        alt: "Our Blog",
+        alt: "Our Blogs",
       },
     ],
   },
