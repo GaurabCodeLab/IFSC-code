@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     "Read our latest articles and stay up to date with industry trends and insights.",
   keywords:
-    "airtel payment bank ifsc codec, maha kumbh, maha kumbh mela, maha kumbh mela 2025, bank of baroda ifsc code, ifsc code kya hai, how to check ifsc code, micr code on cheque, micr code kya hota hai, where is micr code on cheque",
+    "airtel payment bank ifsc code, maha kumbh, maha kumbh mela, maha kumbh mela 2025, bank of baroda ifsc code, ifsc code kya hai, how to check ifsc code, micr code on cheque, micr code kya hota hai, where is micr code on cheque",
   openGraph: {
     title: "Our Blogs | BankInfo Hub",
     description:

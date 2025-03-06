@@ -87,39 +87,6 @@ export default async function BlogPostPage({ params, searchParams }: Props) {
             ))}
           </ul>
         );
-      case "section":
-        return (
-          <section
-            key={index}
-            id={block.content.id ? block.content.id : " "}
-            className=""
-          >
-            <h2 className="text-2xl font-bold mb-4">{block.content.heading}</h2>
-            <p>{block.content.p1}</p>
-            <Image
-              src={block.content.imgLink}
-              width="800"
-              height="100"
-              alt="Sadhus gathering at Maha Kumbh Mela 2025"
-              className="object-cover my-8 rounded-md"
-            />
-            <p>{block.content.p2}</p>
-          </section>
-        );
-      case "listWithLink":
-        return (
-          <ul key={index} className="list-disc pl-6 my-4">
-            {block.content.map((item: any, i: number) => (
-              <li key={i}>
-                {" "}
-                <a href={item.to} className="text-primary hover:underline">
-                  {item.text}
-                </a>
-              </li>
-            ))}
-          </ul>
-        );
-
       case "image":
         const [src, alt] = block.content.split("|");
         return (

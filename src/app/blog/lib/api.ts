@@ -16,9 +16,7 @@ type BlogContent =
       customStyle?: string;
     }
   | { type: "list"; content: string[] }
-  | { type: "listWithLink"; content: any }
   | { type: "image"; content: string }
-  | { type: "section"; content: any }
   | { type: "mahakhumb"; content: any }
   | { type: "table"; content: string[][] };
 
