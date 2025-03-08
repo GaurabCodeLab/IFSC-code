@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import IFSCLookup from "./ifsc-lookup";
 
 export const metadata: Metadata = {
-  title: "ifsc code search",
+  title: "ifsc code search | Find Bank Details",
   description:
     "Enter your IFSC code to quickly find bank details including branch name, address, and more.",
   keywords:
@@ -12,7 +12,12 @@ export const metadata: Metadata = {
     description:
       "Enter your IFSC code to quickly find bank details including branch name, address, and more.",
     images: [
-      "https://res.cloudinary.com/dqquvmo2p/image/upload/v1737315122/ifsc_vgmhx4.webp",
+      {
+        url: "https://res.cloudinary.com/dqquvmo2p/image/upload/v1737315122/ifsc_vgmhx4.webp",
+        width: 1200,
+        height: 630,
+        alt: "ifsc code search",
+      },
     ],
     url: "https://ifsccodeb.com/",
   },
