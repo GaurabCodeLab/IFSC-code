@@ -41,7 +41,7 @@ export default function MICRLookup() {
     const fetchBankDetails = async () => {
       try {
         if (!micr) return;
-        const response = await fetch(`${baseUrl}/${micr}`);
+        const response = await fetch(`../../api/micr/${micr}`);
         if (!response.ok) {
           throw new Error("Something went wrong");
         }
