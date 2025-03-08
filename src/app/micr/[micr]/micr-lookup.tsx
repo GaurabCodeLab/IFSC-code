@@ -19,6 +19,7 @@ interface BranchDetails {
   CITY?: string;
   STATE?: string;
 }
+const baseUrl = process.env.API_BASE_URL;
 
 function SubmitButton() {
   return (
@@ -40,7 +41,7 @@ export default function MICRLookup() {
     const fetchBankDetails = async () => {
       try {
         if (!micr) return;
-        const response = await fetch(`http://localhost:3000/api/micr/${micr}`);
+        const response = await fetch(`${baseUrl}/${micr}`);
         if (!response.ok) {
           throw new Error("Something went wrong");
         }
