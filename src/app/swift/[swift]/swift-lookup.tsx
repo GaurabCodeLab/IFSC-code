@@ -3,9 +3,9 @@ import { Button } from "@/components/ui/button";
 import { useParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Skeleton } from "@/components/ui/skeleton";
 import { SWIFT_API } from "@/utils/constants";
 import Link from "next/link";
+import Shimmer from "@/components/Shimmer";
 
 // Define types for bank details
 interface BranchDetails {
@@ -126,16 +126,7 @@ function ResultsArea({
   branchDetails: BranchDetails | null;
 }) {
   if (!branchDetails) {
-    return (
-      <div className="space-y-2" aria-live="polite" aria-busy="true">
-        <h2 className="text-xl font-semibold">Bank Details</h2>
-        <Skeleton className="h-4 w-[250px] bg-gray-300" />
-        <Skeleton className="h-4 w-[200px] bg-gray-300" />
-        <Skeleton className="h-4 w-[150px] bg-gray-300" />
-        <Skeleton className="h-4 w-[180px] bg-gray-300" />
-        <Skeleton className="h-4 w-[300px] bg-gray-300" />
-      </div>
-    );
+    return <Shimmer />;
   }
 
   return (
