@@ -14,6 +14,7 @@ import {
 import { X } from "lucide-react";
 import { lookupMICR } from "./actions";
 import Shimmer from "@/components/Shimmer";
+import Chatbot from "@/components/ChatBot";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -122,6 +123,7 @@ export default function MICRLookup() {
             </form>
           </CardContent>
         </Card>
+        <Chatbot />
       </div>
     </div>
   );

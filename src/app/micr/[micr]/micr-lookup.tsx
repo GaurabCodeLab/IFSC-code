@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
 import Shimmer from "@/components/Shimmer";
+import Chatbot from "@/components/ChatBot";
 
 // Define types for bank details
 interface BranchDetails {
@@ -108,6 +109,7 @@ export default function MICRLookup() {
             <SubmitButton />
           </Link>
         </Card>
+        <Chatbot />
       </div>
     </div>
   );

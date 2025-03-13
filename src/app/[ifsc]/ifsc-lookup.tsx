@@ -6,6 +6,7 @@ import { IFSC_API } from "@/utils/constants";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
 import Shimmer from "@/components/Shimmer";
+import Chatbot from "@/components/ChatBot";
 
 // Define types for bank details
 interface BranchDetails {
@@ -111,6 +112,7 @@ export default function IFSCLookup() {
             <SubmitButton />
           </Link>
         </Card>
+        <Chatbot />
       </div>
     </div>
   );

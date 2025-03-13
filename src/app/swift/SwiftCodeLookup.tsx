@@ -14,6 +14,7 @@ import { Input } from "@/components/ui/input";
 import { lookupSwiftCode } from "./actions";
 import { X } from "lucide-react";
 import Shimmer from "@/components/Shimmer";
+import Chatbot from "@/components/ChatBot";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -118,6 +119,7 @@ export default function SwiftCodeLookup() {
             </form>
           </CardContent>
         </Card>
+        <Chatbot />
       </div>
     </div>
   );

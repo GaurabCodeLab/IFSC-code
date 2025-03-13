@@ -12,6 +12,7 @@ import {
   CardDescription,
 } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
+import Chatbot from "@/components/ChatBot";
 
 interface Option {
   value: string;
@@ -298,6 +299,7 @@ export default function BankBranchLookup() {
             </div>
           </CardContent>
         </Card>
+        <Chatbot />
       </div>
     </div>
   );

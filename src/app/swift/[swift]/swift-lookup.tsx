@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { SWIFT_API } from "@/utils/constants";
 import Link from "next/link";
 import Shimmer from "@/components/Shimmer";
+import Chatbot from "@/components/ChatBot";
 
 // Define types for bank details
 interface BranchDetails {
@@ -115,6 +116,7 @@ export default function SwiftLookup() {
             <SubmitButton />
           </Link>
         </Card>
+        <Chatbot />
       </div>
     </div>
   );
