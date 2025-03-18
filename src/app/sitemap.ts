@@ -75,7 +75,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       updatedAt: null,
       image:
         "https://res.cloudinary.com/dqquvmo2p/image/upload/v1733083665/DALL_E_2024-12-02_01.37.27_-_An_illustrative_image_of_a_cheque_book_with_a_highlighted_IFSC_code_paired_with_digital_icons_representing_online_transactions_like_a_mobile_phone_a_xku7ch.webp",
-      priority: 0.6,
+      priority: 0.7,
       changeFrequency: "yearly" as const,
     },
     {

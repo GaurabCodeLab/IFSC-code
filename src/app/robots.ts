@@ -4,9 +4,10 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: "*",
-      allow: "*",
-      disallow: "/private/",
+      allow: "/",
+      disallow: ["/private/", "/api/"],
     },
     sitemap: "https://ifsccodeb.com/sitemap.xml",
+    host: "https://ifsccodeb.com",
   };
 }
