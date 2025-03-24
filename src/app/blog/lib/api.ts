@@ -1,4 +1,5 @@
 import MahaKhumb from "@/components/blogs/MahaKhumb";
+import AirtelPaymentBank from "@/components/blogs/AirtelPaymentBank";
 interface BlogPost {
   slug: string;
   title: string;
@@ -18,9 +19,28 @@ type BlogContent =
   | { type: "list"; content: string[] }
   | { type: "image"; content: string }
   | { type: "mahakhumb"; content: any }
+  | { type: "airtelpaymentbank"; content: any }
   | { type: "table"; content: string[][] };
 
 const blogPosts: BlogPost[] = [
+  {
+    slug: "airtel-payment-bank",
+    title: "Airtel Payment Bank: IFSC Code, Customer Care & Complete Guide",
+    excerpt:
+      "Everything you need to know about Airtel Payment Bank - IFSC code, customer care number, account opening process, branches, app features, and retailer network. Your complete guide to banking with Airtel.",
+    coverImage:
+      "https://res.cloudinary.com/dqquvmo2p/image/upload/v1742658005/airtel-bank-office-pusa-samastipur-payment-banks-airtel-kubs12m6fb_pluh21.jpg",
+    coverImage2:
+      "https://res.cloudinary.com/dqquvmo2p/image/upload/v1742658005/airtel-bank-office-pusa-samastipur-payment-banks-airtel-kubs12m6fb_pluh21.jpg",
+    keywords:
+      "airtel payment bank ifsc code, airtel payment bank customer care number, airtel payment bank account open, ifsc code airtel payment bank, airtel payment bank customer number, airtel payment bank branch, airtel payment bank app, airtel payment bank retailer",
+    content: [
+      {
+        type: "airtelpaymentbank",
+        content: AirtelPaymentBank,
+      },
+    ],
+  },
   {
     slug: "maha-kumbh-mela-2025",
     title: "Maha Kumbh Mela 2025: Significance, Dates & Financial Insights",
@@ -39,6 +59,7 @@ const blogPosts: BlogPost[] = [
       },
     ],
   },
+
   {
     slug: "understanding-micr-code-banking",
     title: "Understanding MICR Code: Essential Guide for Banking Transactions",

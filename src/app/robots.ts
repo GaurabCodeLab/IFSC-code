@@ -8,6 +8,5 @@ export default function robots(): MetadataRoute.Robots {
       disallow: ["/private/", "/api/"],
     },
     sitemap: "https://ifsccodeb.com/sitemap.xml",
-    host: "https://ifsccodeb.com",
   };
 }
