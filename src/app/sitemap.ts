@@ -88,6 +88,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8, // Higher priority for trending/current content
       changeFrequency: "monthly" as const, // Event coverage might update frequently
     },
+    {
+      slug: "airtel-payment-bank",
+      title: "Airtel Payment Bank: IFSC Code, Customer Care & Complete Guide",
+      publishedAt: "2025-03-24",
+      updatedAt: null, // No updates yet
+      image:
+        "https://res.cloudinary.com/dqquvmo2p/image/upload/v1742658005/airtel-bank-office-pusa-samastipur-payment-banks-airtel-kubs12m6fb_pluh21.jpg",
+
+      priority: 0.9, // Higher priority for trending/current content
+      changeFrequency: "monthly" as const, // Event coverage might update frequently
+    },
     // Add more blog posts here
     // {
     //   slug: "digital-banking-trends-2025",
