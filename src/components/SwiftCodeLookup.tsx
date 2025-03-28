@@ -11,7 +11,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { lookupSwiftCode } from "./actions";
+import { lookupSwiftCode } from "../app/swiftcode/actions";
 import { X } from "lucide-react";
 import Shimmer from "@/components/Shimmer";
 import Chatbot from "@/components/ChatBot";
@@ -65,7 +65,8 @@ export default function SwiftCodeLookup() {
               <li>Last 3 characters (XXX): Branch code (optional)</li>
             </ul>
             <p>
-              <strong>Example:</strong> BOFAUS3NXXX (Bank of America, USA)
+              <strong>Example:</strong> HDFCINBBHYD (
+              <strong>hdfc bank swift code</strong>, Hyderabad)
             </p>
             <p className="mt-4">
               SWIFT codes are essential for international wire transfers and
@@ -145,12 +146,12 @@ function ResultsArea({ state }: { state: any }) {
       <div className="mt-4 space-y-2" aria-live="polite">
         <h2 className="text-xl font-semibold">Bank Details</h2>
         <div className="grid gap-2">
-          {state.data.branch && renderBankDetail("Branch", state.data.branch)}
-          {renderBankDetail("City", state.data.city)}
-          {renderBankDetail("IFSC", state.data.IFSC)}
-          {renderBankDetail("Country", state.data.country)}
-          {renderBankDetail("Country Code", state.data.country_code)}
-          {renderBankDetail("Swift Code", state.data.swift_code)}
+          {state.data.bank && renderBankDetail("Bank", state.data.bank.name)}
+          {renderBankDetail("Branch", state.data.branch_name)}
+          {renderBankDetail("City", state.data.city.name)}
+          {renderBankDetail("Address", state.data.address)}
+          {renderBankDetail("Country", state.data.country.name)}
+          {renderBankDetail("Swift Code", state.data.id)}
         </div>
       </div>
     );

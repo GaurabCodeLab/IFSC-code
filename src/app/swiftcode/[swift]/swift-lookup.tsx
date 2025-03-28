@@ -10,13 +10,12 @@ import Chatbot from "@/components/ChatBot";
 
 // Define types for bank details
 interface BranchDetails {
-  swift_code?: string;
-  bank_name?: string;
-  branch?: string;
-  city?: string;
-  IFSC?: string;
-  country?: string;
-  country_code?: string;
+  address: string;
+  branch_name: string;
+  bank: any;
+  city: any;
+  country: any;
+  id: string;
 }
 
 function SubmitButton() {
@@ -42,15 +41,16 @@ export default function SwiftLookup() {
         const response = await fetch(`${SWIFT_API}${swift}`, {
           method: "GET",
           headers: {
-            "Content-Type": "application/json",
-            "X-Api-Key": "DXM6GzhpXoYj3bIZaOZ24A==iinGYOxOED2YVsBq",
+            Accept: "application/json",
+            "X-Api-Key":
+              "sk_a167bc18b91c1d2d3a3e4e982e5859cdc676e68e70f10d20a68bac16abab1302",
           },
         });
         if (!response.ok) {
           throw new Error("Something went wrong");
         }
-        const result: BranchDetails[] = await response.json();
-        setBranchDetails(result[0]);
+        const result = await response.json();
+        setBranchDetails(result.data);
         setErrorMessage(null);
       } catch (error) {
         console.error(error);
@@ -93,7 +93,8 @@ export default function SwiftLookup() {
               <li>Last 3 characters (XXX): Branch code (optional)</li>
             </ul>
             <p>
-              <strong>Example:</strong> BOFAUS3NXXX (Bank of America, USA)
+              <strong>Example:</strong> HDFCINBBHYD (
+              <strong>hdfc bank swift code</strong>, Hyderabad)
             </p>
             <p className="mt-4">
               SWIFT codes are essential for international wire transfers and
@@ -112,7 +113,7 @@ export default function SwiftLookup() {
               <ResultsArea branchDetails={branchDetails} />
             )}
           </CardContent>
-          <Link href="/swift">
+          <Link href="/swiftcode">
             <SubmitButton />
           </Link>
         </Card>
@@ -133,16 +134,14 @@ function ResultsArea({
 
   return (
     <div className="mt-0 space-y-2" aria-live="polite">
-      <h2 className="text-xl font-semibold">
-        Swift Code: {branchDetails.swift_code}
-      </h2>
+      <h2 className="text-xl font-semibold">Swift Code: {branchDetails.id}</h2>
       <div className="grid gap-2">
-        {renderBankDetail("Branch", branchDetails.branch)}
-        {renderBankDetail("City", branchDetails.city)}
-        {renderBankDetail("IFSC", branchDetails.IFSC)}
-        {renderBankDetail("Country", branchDetails.country)}
-        {renderBankDetail("Country Code", branchDetails.country_code)}
-        {renderBankDetail("Swift Code", branchDetails.swift_code)}
+        {branchDetails.bank &&
+          renderBankDetail("Bank", branchDetails.bank.name)}
+        {renderBankDetail("Branch", branchDetails.branch_name)}
+        {renderBankDetail("City", branchDetails.city.name)}
+        {renderBankDetail("Address", branchDetails.address)}
+        {renderBankDetail("Country", branchDetails.country.name)}
       </div>
     </div>
   );

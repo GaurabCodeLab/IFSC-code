@@ -8,7 +8,7 @@ import { Menu, X } from "lucide-react";
 const navItems = [
   { href: "/", label: "IFSC Lookup" },
   { href: "/micr", label: "MICR Lookup" },
-  { href: "/swift", label: "SWIFT Lookup" },
+  { href: "/swiftcode", label: "SWIFT Lookup" },
   { href: "/branch", label: "Branch Finder" },
   { href: "/blog", label: "Banking Blog" },
 ];

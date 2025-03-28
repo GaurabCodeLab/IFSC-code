@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import SwiftCodeLookup from "./SwiftCodeLookup";
+import SwiftCodeLookup from "../../components/SwiftCodeLookup";
 
 export const metadata: Metadata = {
   title: "SWIFT Code finder | Find Bank Details",
