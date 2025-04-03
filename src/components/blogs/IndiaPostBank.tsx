@@ -17,11 +17,11 @@ export default function IndiaPostBank() {
           India Post Payment Bank: Complete Guide to Banking Services
         </h1>
 
-        <div className="flex items-center gap-2 text-sm text-muted-foreground mb-8">
+        {/* <div className="flex items-center gap-2 text-sm text-muted-foreground mb-8">
           <span>Published: March 25, 2025</span>
           <span>•</span>
           <span>Last Updated: March 25, 2025</span>
-        </div>
+        </div> */}
 
         <div className="relative w-full h-[400px] rounded-lg overflow-hidden mb-8">
           <Image
