@@ -5,7 +5,16 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/private/", "/api/"],
+      disallow: [
+        "/private/",
+        "/api/",
+        "/Rss.php",
+        "/rss.xml",
+        "/pincode/",
+        "/pincode/Patancheru-Ie-pincode_502319.html",
+        "/pincode/mahadevpur-lohit-pincode_792105.html",
+        "/pincode/Joygopal-Pur-N-Bazar-pincode_743312.html",
+      ],
     },
     sitemap: "https://ifsccodeb.com/sitemap.xml",
   };
