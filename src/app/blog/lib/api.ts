@@ -1,5 +1,6 @@
 import MahaKhumb from "@/components/blogs/MahaKhumb";
 import AirtelPaymentBank from "@/components/blogs/AirtelPaymentBank";
+import IndiaPostBank from "@/components/blogs/IndiaPostBank";
 interface BlogPost {
   slug: string;
   title: string;
@@ -20,14 +21,34 @@ type BlogContent =
   | { type: "image"; content: string }
   | { type: "mahakhumb"; content: any }
   | { type: "airtelpaymentbank"; content: any }
+  | { type: "indiapostbank"; content: any }
   | { type: "table"; content: string[][] };
 
 const blogPosts: BlogPost[] = [
   {
+    slug: "indian-post-payment-bank",
+    title:
+      "India Post Payment Bank: Complete Guide , Banking Services & IFSC Code",
+    excerpt:
+      "Comprehensive guide to India Post Payment Bank, IFSC code (IPOS0000001), banking services, balance check methods, and account opening process. Everything you need to know about IPPB.",
+    coverImage:
+      "https://res.cloudinary.com/dqquvmo2p/image/upload/v1743494944/post1_qi050y.png",
+    coverImage2:
+      "https://res.cloudinary.com/dqquvmo2p/image/upload/v1743494944/post1_qi050y.png",
+    keywords:
+      "india post payment bank, india post payment bank ifsc code, indian post payment bank, india post payment bank ifsc code ipos0000001, ifsc code india post payment bank, india post payment bank balance check, india post payment bank customer care number, india post payment bank ka ifsc code kya hai",
+    content: [
+      {
+        type: "indiapostbank",
+        content: IndiaPostBank,
+      },
+    ],
+  },
+  {
     slug: "airtel-payment-bank",
     title: "Airtel Payment Bank: IFSC Code, Customer Care & Complete Guide",
     excerpt:
-      "Everything you need to know about Airtel Payment Bank - IFSC code, customer care number, account opening process, branches, app features, and retailer network. Your complete guide to banking with Airtel.",
+      "Everything you need to know about Airtel Payment Bank - IFSC code (AIRP0000001), customer care number, account opening process, branches, app features, and retailer network. Your complete guide to banking with Airtel.",
     coverImage:
       "https://res.cloudinary.com/dqquvmo2p/image/upload/v1742658005/airtel-bank-office-pusa-samastipur-payment-banks-airtel-kubs12m6fb_pluh21.jpg",
     coverImage2:
@@ -41,11 +62,12 @@ const blogPosts: BlogPost[] = [
       },
     ],
   },
+
   {
     slug: "maha-kumbh-mela-2025",
     title: "Maha Kumbh Mela 2025: Significance, Dates & Financial Insights",
     excerpt:
-      "Explore the Maha Kumbh Mela 2025, a rare spiritual gathering in Prayagraj. This guide covers dates, significance, and economic impact, including the importance of IFSC codes for secure transactions. Learn about extensive banking services and the event's massive economic impact on India and Uttar Pradesh.",
+      "Explore the Maha Kumbh Mela 2025, a rare spiritual gathering in Prayagraj. This guide covers dates, significance, and economic impact, including the importance of IFSC codes for secure transactions.",
     coverImage:
       "https://res.cloudinary.com/dqquvmo2p/image/upload/v1740851841/7f1gjoe_maha-kumbh_160x120_15_January_25_ioajo9.webp",
     coverImage2:

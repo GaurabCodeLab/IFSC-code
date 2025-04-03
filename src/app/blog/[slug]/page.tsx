@@ -134,6 +134,8 @@ export default async function BlogPostPage({ params, searchParams }: Props) {
         return <div key={index}>{block.content()}</div>;
       case "airtelpaymentbank":
         return <div key={index}>{block.content()}</div>;
+      case "indiapostbank":
+        return <div key={index}>{block.content()}</div>;
       default:
         return null; // Return null for unsupported block types
     }

@@ -879,7 +879,7 @@ export default function AirtelPaymentBank() {
 
         <section id="faqs" className="mt-10">
           <h2 className="text-2xl font-bold mb-6">
-            Frequently Asked Questions About Airtel Payment Bank
+            Frequently Asked Questions(FAQ'S) About Airtel Payment Bank
           </h2>
 
           <Accordion type="single" collapsible className="w-full">
@@ -994,8 +994,8 @@ export default function AirtelPaymentBank() {
                       prevent fraudulent activities
                     </li>
                     <li>
-                      Regular security audits and compliance checks are
-                      conducted
+                      Routine security assessments and compliance evaluations
+                      are performed regularly.
                     </li>
                   </ul>
                   <p className="mt-2">
@@ -1130,6 +1130,40 @@ export default function AirtelPaymentBank() {
             >
               Find More Bank IFSC Codes
             </Link>
+          </div>
+        </section>
+        <section className="mt-12 bg-gray-50 dark:bg-gray-800/30 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+          <h2 className="text-xl font-bold mb-4 text-gray-700 dark:text-gray-300">
+            Disclaimer
+          </h2>
+          <div className="text-sm text-gray-600 dark:text-gray-400 space-y-3">
+            <p>
+              The details shared in this article about Airtel Payment Bank’s
+              IFSC code and banking services are for general informational
+              purposes only. We do our best to ensure the accuracy and relevance
+              of the information, but we cannot guarantee that it is always
+              complete, up-to-date, or error-free.
+            </p>
+            <p>
+              The IFSC code (AIRP0000001) mentioned here is based on the latest
+              available data. However, we strongly recommend verifying it
+              through official sources before using it for any financial
+              transactions.
+            </p>
+            <p>
+              Banking procedures, contact details, and services may change over
+              time. To get the most accurate and updated information, please
+              visit Airtel Payment Bank’s official website{" "}
+              <a
+                href="https://www.airtel.in/bank"
+                className="text-blue-600 hover:underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                www.airtel.in/bank
+              </a>{" "}
+              or contact their customer support before making any decisions.
+            </p>
           </div>
         </section>
       </article>
