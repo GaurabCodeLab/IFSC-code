@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
 import Shimmer from "@/components/Shimmer";
 import Chatbot from "@/components/ChatBot";
+import { useRouter } from "next/navigation";
 
 // Define types for bank details
 interface BranchDetails {
@@ -36,6 +37,7 @@ export default function IFSCLookup() {
   );
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const params = useParams();
+  const router = useRouter();
   const ifsc = params.ifsc as string | undefined; // Ensure ifsc is treated as string or undefined
 
   useEffect(() => {
@@ -55,7 +57,9 @@ export default function IFSCLookup() {
       }
     };
 
-    if (ifsc && /^[A-Z]{4}0[A-Z0-9]{6}$/.test(ifsc.toUpperCase())) {
+    if (ifsc === "find-branch-by-ifsc-code") {
+      router.push("/");
+    } else if (ifsc && /^[A-Z]{4}0[A-Z0-9]{6}$/.test(ifsc.toUpperCase())) {
       fetchBankDetails();
     } else {
       setErrorMessage("IFSC Code is in wrong format");

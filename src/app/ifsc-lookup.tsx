@@ -77,9 +77,9 @@ export default function IFSCLookup() {
 
         <Card>
           <CardHeader>
-            <CardTitle>Bank Details Lookup</CardTitle>
+            <CardTitle>Branch Details Lookup</CardTitle>
             <CardDescription>
-              Enter an IFSC code to find bank details
+              Enter an IFSC code to find branch details
             </CardDescription>
           </CardHeader>
           <CardContent>
