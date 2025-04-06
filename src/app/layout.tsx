@@ -1,6 +1,6 @@
 import localFont from "next/font/local";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import Header from "@/components/common/Header";
+import Footer from "@/components/common/Footer";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/react";

@@ -5,8 +5,9 @@ import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { SWIFT_API } from "@/utils/constants";
 import Link from "next/link";
-import Shimmer from "@/components/Shimmer";
-import Chatbot from "@/components/ChatBot";
+import Shimmer from "@/components/common/Shimmer";
+import Chatbot from "@/components/common/ChatBot";
+import Swift from "@/components/common/Swift";
 
 // Define types for bank details
 interface BranchDetails {
@@ -72,36 +73,7 @@ export default function SwiftLookup() {
     <div className="w-full max-w-6xl mx-auto p-4">
       <h1 className="text-3xl font-bold mb-6 text-center">Swift Code Lookup</h1>
       <div className="md:grid md:grid-cols-2 gap-6 flex flex-col-reverse">
-        <Card>
-          <CardHeader>
-            <CardTitle>What is a SWIFT code?</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="mb-4">
-              SWIFT (Society for Worldwide Interbank Financial
-              Telecommunication) code, also known as BIC (Bank Identifier Code),
-              is a unique identification code for banks and financial
-              institutions worldwide.
-            </p>
-            <p className="mb-2">
-              <strong>Format:</strong> AAAABBCCXXX
-            </p>
-            <ul className="list-disc list-inside mb-4">
-              <li>First 4 characters (AAAA): Bank code</li>
-              <li>Next 2 characters (BB): Country code</li>
-              <li>Next 2 characters (CC): Location code</li>
-              <li>Last 3 characters (XXX): Branch code (optional)</li>
-            </ul>
-            <p>
-              <strong>Example:</strong> HDFCINBBHYD (
-              <strong>hdfc bank swift code</strong>, Hyderabad)
-            </p>
-            <p className="mt-4">
-              SWIFT codes are essential for international wire transfers and
-              help ensure that funds are sent to the correct bank and account.
-            </p>
-          </CardContent>
-        </Card>
+        <Swift />
         <Card>
           <CardHeader>
             <CardTitle>Bank Details:</CardTitle>

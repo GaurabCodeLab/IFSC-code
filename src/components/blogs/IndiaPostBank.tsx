@@ -947,7 +947,7 @@ export default function IndiaPostBank() {
 
         <section id="faqs" className="mt-10">
           <h2 className="text-2xl font-bold mb-6">
-            Frequently Asked Questions(FAQ'S) About India Post Payment Bank
+            Frequently Asked Questions (FAQs)
           </h2>
 
           <Accordion type="single" collapsible className="w-full">

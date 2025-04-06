@@ -12,7 +12,10 @@ import {
   CardDescription,
 } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import Chatbot from "@/components/ChatBot";
+import Chatbot from "@/components/common/ChatBot";
+import { useParams } from "next/navigation";
+import Ifsc from "@/components/common/Ifsc";
+import Micr from "@/components/common/Micr";
 
 interface Option {
   value: string;
@@ -54,12 +57,23 @@ export default function BankBranchLookup() {
 
   const debouncedBankSearch = useDebounce(bankSearch, 300);
   const debouncedBranchSearch = useDebounce(branchSearch, 300);
+  const { bank } = useParams();
 
-  const fetchBanks = useCallback(async (search: string) => {
+  console.log("params hai", bank);
+
+  const fetchBanks = useCallback(async (search: any) => {
     setIsLoadingBanks(true);
+    const searchStr = search?.split("-")?.join(" ") || "";
     try {
-      const data = await getBanks(search);
+      const data = await getBanks(searchStr);
       setBanks(data.map((bank) => ({ value: bank.id, label: bank.name })));
+      if (bank) {
+        const tempBankDetails = data.map((bank) => ({
+          value: bank.id,
+          label: bank.name,
+        }))[0];
+        setSelectedBank(tempBankDetails);
+      }
     } catch (error) {
       console.error("Error fetching banks:", error);
     } finally {
@@ -99,9 +113,8 @@ export default function BankBranchLookup() {
     },
     []
   );
-
   useEffect(() => {
-    fetchBanks("");
+    fetchBanks(bank ? bank : "");
   }, [fetchBanks]);
 
   useEffect(() => {
@@ -139,7 +152,13 @@ export default function BankBranchLookup() {
     label: string,
     value: string | number | boolean | undefined
   ) => {
-    if (value !== undefined && value !== null && value !== "N/A") {
+    if (
+      value !== undefined &&
+      value !== null &&
+      value !== "N/A" &&
+      value !== "" &&
+      value !== 0
+    ) {
       return (
         <p>
           <strong>{label}:</strong> {value.toString()}
@@ -156,60 +175,8 @@ export default function BankBranchLookup() {
       </h1>
       <div className="md:grid md:grid-cols-2 gap-6 flex flex-col-reverse">
         <div className="space-y-6">
-          <Card>
-            <CardHeader>
-              <CardTitle>What is an IFSC code?</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="mb-4">
-                IFSC (Indian Financial System Code) is an 11-character code that
-                uniquely identifies a bank branch in India. It's used for
-                electronic funds transfers and is essential for NEFT, RTGS, and
-                IMPS transactions.
-              </p>
-              <p className="mb-2">
-                <strong>Format:</strong> AAAABCCXXX
-              </p>
-              <ul className="list-disc list-inside mb-4">
-                <li>First 4 characters (AAAA): Bank code</li>
-                <li>5th character (B): 0 (zero)</li>
-                <li>Last 6 characters (CCXXX): Branch code</li>
-              </ul>
-              <p>
-                <strong>Example:</strong> BARB0BALESH (
-                <strong>bank of baroda ifsc code</strong>, BALESHWAR Branch)
-              </p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader>
-              <CardTitle>What is a MICR code?</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="mb-4">
-                MICR (Magnetic Ink Character Recognition) code is a 9-digit code
-                that uniquely identifies a bank branch in India. It's primarily
-                used for processing cheques and other documents.
-              </p>
-              <p className="mb-2">
-                <strong>Format:</strong> CCCBBBSSS
-              </p>
-              <ul className="list-disc list-inside mb-4">
-                <li>First 3 digits (CCC): City code</li>
-                <li>Next 3 digits (BBB): Bank code</li>
-                <li>Last 3 digits (SSS): Branch code</li>
-              </ul>
-              <p>
-                <strong>Example:</strong> 110002052 (
-                <strong>sbi micr code</strong>, JAHANGIRPURI Branch)
-              </p>
-              <p className="mt-4">
-                MICR codes are printed on cheques using special magnetic ink,
-                allowing for quick and accurate processing of financial
-                documents.
-              </p>
-            </CardContent>
-          </Card>
+          <Ifsc />
+          <Micr />
         </div>
         <Card>
           <CardHeader>
@@ -224,7 +191,7 @@ export default function BankBranchLookup() {
                 htmlFor="bank-select"
                 className="block text-sm font-medium text-gray-700"
               >
-                Select a bank
+                Search and Select a bank
               </label>
               <Select
                 id="bank-select"
@@ -244,7 +211,7 @@ export default function BankBranchLookup() {
                   htmlFor="branch-select"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  Select a branch
+                  Search and Select a branch
                 </label>
                 <Select
                   id="branch-select"

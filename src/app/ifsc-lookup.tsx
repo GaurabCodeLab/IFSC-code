@@ -13,8 +13,9 @@ import {
 } from "@/components/ui/card";
 import { X } from "lucide-react";
 import { lookupIFSC } from "./actions";
-import Shimmer from "@/components/Shimmer";
-import Chatbot from "@/components/ChatBot";
+import Shimmer from "@/components/common/Shimmer";
+import Chatbot from "@/components/common/ChatBot";
+import Ifsc from "@/components/common/Ifsc";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -44,37 +45,7 @@ export default function IFSCLookup() {
     <div className="w-full max-w-6xl mx-auto p-4">
       <h1 className="text-3xl font-bold mb-6 text-center">IFSC Code Lookup</h1>
       <div className="md:grid md:grid-cols-2 gap-6 flex flex-col-reverse">
-        <Card>
-          <CardHeader>
-            <CardTitle>What is an IFSC code?</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="mb-4">
-              IFSC (Indian Financial System Code) is an 11-character code that
-              uniquely identifies a bank branch in India. It's used for
-              electronic funds transfers and is essential for NEFT, RTGS, and
-              IMPS transactions.
-            </p>
-            <p className="mb-2">
-              <strong>Format:</strong> AAAABCCXXX
-            </p>
-            <ul className="list-disc list-inside mb-4">
-              <li>First 4 characters (AAAA): Bank code</li>
-              <li>5th character (B): 0 (zero)</li>
-              <li>Last 6 characters (CCXXX): Branch code</li>
-            </ul>
-            <p>
-              <strong>Example:</strong> AIRP0000001 (
-              <strong>airtel payment bank ifsc code</strong>)
-            </p>
-            <p>
-              The IFSC (Indian Financial System Code) uniquely identifies bank
-              branches for electronic payments in India, ensuring secure
-              transactions.
-            </p>
-          </CardContent>
-        </Card>
-
+        <Ifsc />
         <Card>
           <CardHeader>
             <CardTitle>Branch Details Lookup</CardTitle>
