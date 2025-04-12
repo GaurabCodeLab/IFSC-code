@@ -111,6 +111,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9, // Higher priority for trending/current content
       changeFrequency: "monthly" as const, // Event coverage might update frequently
     },
+    {
+      slug: "swift-code-finder",
+      title:
+        "SWIFT Code Finder: Complete Guide to Bank SWIFT Codes in India | IFSC Code",
+      publishedAt: "2025-04-12",
+      updatedAt: null, // No updates yet
+      image:
+        "https://res.cloudinary.com/dqquvmo2p/image/upload/v1744300654/swiftcode_isoxom.webp",
+
+      priority: 0.9, // Higher priority for trending/current content
+      changeFrequency: "monthly" as const, // Event coverage might update frequently
+    },
     // Add more blog posts here
     // {
     //   slug: "digital-banking-trends-2025",

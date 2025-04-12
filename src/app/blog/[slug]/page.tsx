@@ -136,6 +136,8 @@ export default async function BlogPostPage({ params, searchParams }: Props) {
         return <div key={index}>{block.content()}</div>;
       case "indiapostbank":
         return <div key={index}>{block.content()}</div>;
+      case "swiftcode":
+        return <div key={index}>{block.content()}</div>;
       default:
         return null; // Return null for unsupported block types
     }
@@ -159,7 +161,7 @@ export default async function BlogPostPage({ params, searchParams }: Props) {
             src={post.coverImage || "/placeholder.svg"}
             alt={post.title}
             width={1200}
-            height={630}
+            height={30}
             className="rounded-lg shadow-md"
           />
         </header>

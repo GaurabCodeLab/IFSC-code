@@ -1,6 +1,7 @@
 import MahaKhumb from "@/components/blogs/MahaKhumb";
 import AirtelPaymentBank from "@/components/blogs/AirtelPaymentBank";
 import IndiaPostBank from "@/components/blogs/IndiaPostBank";
+import SwiftCode from "@/components/blogs/SwiftCode";
 interface BlogPost {
   slug: string;
   title: string;
@@ -22,9 +23,29 @@ type BlogContent =
   | { type: "mahakhumb"; content: any }
   | { type: "airtelpaymentbank"; content: any }
   | { type: "indiapostbank"; content: any }
+  | { type: "swiftcode"; content: any }
   | { type: "table"; content: string[][] };
 
 const blogPosts: BlogPost[] = [
+  {
+    slug: "swift-code-finder",
+    title:
+      "SWIFT Code Finder: Complete Guide to Bank SWIFT Codes in India | IFSC Code",
+    excerpt:
+      "Learn what SWIFT codes are, how they differ from IFSC codes, and find SWIFT codes for major Indian banks like SBI, HDFC, and Kotak. Use our free SWIFT code finder tool for international transactions.",
+    coverImage:
+      "https://res.cloudinary.com/dqquvmo2p/image/upload/v1744300654/swiftcode_isoxom.webp",
+    coverImage2:
+      "https://res.cloudinary.com/dqquvmo2p/image/upload/v1744300654/swiftcode_isoxom.webp",
+    keywords:
+      "swift code finder, state bank of india swift code, hdfc bank swift code, kotak bank swift code, is swift code and ifsc code same, what is swift code of sbi, what is swift code of hdfc bank, swift code kya hota hai, what is a swift code for a bank",
+    content: [
+      {
+        type: "swiftcode",
+        content: SwiftCode,
+      },
+    ],
+  },
   {
     slug: "indian-post-payment-bank",
     title:
