@@ -2,6 +2,7 @@ import MahaKhumb from "@/components/blogs/MahaKhumb";
 import AirtelPaymentBank from "@/components/blogs/AirtelPaymentBank";
 import IndiaPostBank from "@/components/blogs/IndiaPostBank";
 import SwiftCode from "@/components/blogs/SwiftCode";
+import MicrCode from "@/components/blogs/MicrCode";
 interface BlogPost {
   slug: string;
   title: string;
@@ -24,6 +25,7 @@ type BlogContent =
   | { type: "airtelpaymentbank"; content: any }
   | { type: "indiapostbank"; content: any }
   | { type: "swiftcode"; content: any }
+  | { type: "micrcode"; content: any }
   | { type: "table"; content: string[][] };
 
 const blogPosts: BlogPost[] = [
@@ -85,6 +87,25 @@ const blogPosts: BlogPost[] = [
   },
 
   {
+    slug: "understanding-micr-code-banking",
+    title: "MICR Code: Complete Guide to Bank MICR Codes in India | IFSC Code",
+    excerpt:
+      "Learn what MICR code is, how to find it on your cheque, and why it's important for banking transactions. Find MICR codes for SBI, Union Bank, and more.",
+    coverImage:
+      "https://res.cloudinary.com/dqquvmo2p/image/upload/v1733173292/DALL_E_2024-12-03_02.28.06_-_A_user-friendly_and_simple_illustration_for_a_blog_about_MICR_codes_in_banking._The_image_features_a_magnifying_glass_hovering_over_a_cheque_clearly_r5evzq.webp",
+    coverImage2:
+      "https://res.cloudinary.com/dqquvmo2p/image/upload/v1733173292/DALL_E_2024-12-03_02.28.06_-_A_user-friendly_and_simple_illustration_for_a_blog_about_MICR_codes_in_banking._The_image_features_a_magnifying_glass_hovering_over_a_cheque_clearly_r5evzq.webp",
+    keywords:
+      "micr code, micr code on cheque, sbi micr code, state bank of india micr code, union bank of india micr code, what is micr code in cheque book, what is micr code of bank, how to find micr code on cheque, how to find micr code of sbi, micr code consists of how many digits",
+    content: [
+      {
+        type: "micrcode",
+        content: MicrCode,
+      },
+    ],
+  },
+
+  {
     slug: "maha-kumbh-mela-2025",
     title: "Maha Kumbh Mela 2025: Significance, Dates & Financial Insights",
     excerpt:
@@ -103,174 +124,174 @@ const blogPosts: BlogPost[] = [
     ],
   },
 
-  {
-    slug: "understanding-micr-code-banking",
-    title: "Understanding MICR Code: Essential Guide for Banking Transactions",
-    excerpt:
-      "Discover what MICR code means, its importance in banking, and how to find it on your cheque. Learn everything about MICR codes and their role in secure transactions.",
-    coverImage:
-      "https://res.cloudinary.com/dqquvmo2p/image/upload/v1733173292/DALL_E_2024-12-03_02.28.06_-_A_user-friendly_and_simple_illustration_for_a_blog_about_MICR_codes_in_banking._The_image_features_a_magnifying_glass_hovering_over_a_cheque_clearly_r5evzq.webp",
-    content: [
-      {
-        type: "paragraph",
-        content:
-          'In the world of banking, you may have come across the term "MICR code" on your cheque or during transactions. But what is MICR code, and why is it so important? This comprehensive guide will explain everything you need to know about MICR codes and their significance in modern banking.',
-      },
-      {
-        type: "heading",
-        content: "What is MICR Code?",
-      },
-      {
-        type: "paragraph",
-        content:
-          "MICR stands for Magnetic Ink Character Recognition. It's a technology used by banks to enhance the security and efficiency of cheque processing. The MICR code is a unique series of numbers printed at the bottom of a cheque using special magnetic ink.",
-      },
-      {
-        type: "paragraph",
-        content:
-          'When you hear "MICR code means," it refers to this special code that helps in the automated processing of cheques and other bank documents.',
-      },
-      {
-        type: "heading",
-        content: "Understanding the MICR Code on Cheque",
-      },
-      {
-        type: "paragraph",
-        content:
-          "The MICR code on cheque is typically a 9-digit number divided into three parts:",
-      },
-      {
-        type: "list",
-        content: [
-          "City Code (3 digits): Represents the city where the bank branch is located.",
-          "Bank Code (3 digits): Identifies the specific bank.",
-          "Branch Code (3 digits): Uniquely identifies the particular branch of the bank.",
-        ],
-      },
-      {
-        type: "paragraph",
-        content:
-          "For example, if you see a MICR code like 400002002, it can be broken down as:",
-      },
-      {
-        type: "list",
-        content: [
-          "400: City code (e.g., Mumbai)",
-          "002: Bank code (e.g., State Bank of India)",
-          "002: Branch code (e.g., Main Branch)",
-        ],
-      },
-      {
-        type: "heading",
-        content: "Importance of MICR Code in Banking",
-      },
-      {
-        type: "paragraph",
-        content:
-          "The MICR code of bank plays a crucial role in various banking operations:",
-      },
-      {
-        type: "list",
-        content: [
-          "Faster Cheque Processing: MICR codes enable quick and accurate reading of cheque information.",
-          "Reduced Errors: The magnetic ink and standardized format minimize errors in cheque processing.",
-          "Enhanced Security: MICR codes are difficult to forge, adding an extra layer of security to transactions.",
-          "Automated Clearing: It facilitates automated clearing house (ACH) operations, speeding up inter-bank transactions.",
-        ],
-      },
-      {
-        type: "heading",
-        content: "How to Find MICR Code in Cheque",
-      },
-      {
-        type: "paragraph",
-        content:
-          "Locating the MICR code in cheque is straightforward. Look at the bottom of your cheque, and you'll see a series of numbers printed in a special font. The MICR code is typically the second set of numbers from the left, following the cheque number.",
-      },
-      {
-        type: "image",
-        content:
-          "https://res.cloudinary.com/dqquvmo2p/image/upload/v1733173993/Screenshot_from_2024-12-03_02-42-49_pqmvta.png",
-      },
-      {
-        type: "heading",
-        content: "MICR Code vs. IFSC Code: Understanding the Difference",
-      },
-      {
-        type: "paragraph",
-        content:
-          "While both MICR and IFSC codes are important in banking, they serve different purposes:",
-      },
-      {
-        type: "table",
-        content: [
-          ["Feature", "MICR Code", "IFSC Code"],
-          [
-            "Full Form",
-            "Magnetic Ink Character Recognition",
-            "Indian Financial System Code",
-          ],
-          ["Length", "9 digits", "11 characters (alphanumeric)"],
-          [
-            "Primary Use",
-            "Cheque processing and clearance",
-            "Online fund transfers (NEFT, RTGS, IMPS)",
-          ],
-          ["Format", "Numeric only", "Alphanumeric"],
-          [
-            "Location",
-            "Printed on cheques",
-            "Not on cheques; found on bank websites or statements",
-          ],
-        ],
-      },
-      {
-        type: "heading",
-        content: "Frequently Asked Questions About MICR Codes",
-      },
-      {
-        type: "subheading",
-        content: "Q: Can I find my MICR code without a cheque?",
-      },
-      {
-        type: "paragraph",
-        content:
-          "A: Yes, you can find your MICR code without a cheque. Check your bank statement, contact your bank's customer service, or look it up on your bank's official website.",
-      },
-      {
-        type: "subheading",
-        content: "Q: Is the MICR code the same for all branches of a bank?",
-      },
-      {
-        type: "paragraph",
-        content:
-          "A: No, each branch has its unique MICR code. The last three digits of the MICR code (branch code) differ for each branch of the same bank.",
-      },
-      {
-        type: "subheading",
-        content: "Q: Can MICR codes change?",
-      },
-      {
-        type: "paragraph",
-        content:
-          "A: Yes, MICR codes can change if a bank branch relocates or merges with another branch. Always verify the current MICR code with your bank.",
-      },
-      {
-        type: "heading",
-        content: "Conclusion",
-      },
-      {
-        type: "paragraph",
-        content:
-          "Understanding what MICR code means and its importance in banking can help you navigate financial transactions more effectively. Whether you're writing a cheque or setting up direct deposits, knowing how to find and use the MICR code on your cheque is valuable knowledge for any bank account holder.",
-      },
-      {
-        type: "paragraph",
-        content:
-          "Remember, while MICR codes are crucial for cheque processing, they work alongside other banking codes like IFSC to ensure smooth, secure, and efficient banking operations in the digital age.",
-      },
-    ],
-  },
+  // {
+  //   slug: "understanding-micr-code-banking",
+  //   title: "Understanding MICR Code: Essential Guide for Banking Transactions",
+  //   excerpt:
+  //     "Discover what MICR code means, its importance in banking, and how to find it on your cheque. Learn everything about MICR codes and their role in secure transactions.",
+  //   coverImage:
+  //     "https://res.cloudinary.com/dqquvmo2p/image/upload/v1733173292/DALL_E_2024-12-03_02.28.06_-_A_user-friendly_and_simple_illustration_for_a_blog_about_MICR_codes_in_banking._The_image_features_a_magnifying_glass_hovering_over_a_cheque_clearly_r5evzq.webp",
+  //   content: [
+  //     {
+  //       type: "paragraph",
+  //       content:
+  //         'In the world of banking, you may have come across the term "MICR code" on your cheque or during transactions. But what is MICR code, and why is it so important? This comprehensive guide will explain everything you need to know about MICR codes and their significance in modern banking.',
+  //     },
+  //     {
+  //       type: "heading",
+  //       content: "What is MICR Code?",
+  //     },
+  //     {
+  //       type: "paragraph",
+  //       content:
+  //         "MICR stands for Magnetic Ink Character Recognition. It's a technology used by banks to enhance the security and efficiency of cheque processing. The MICR code is a unique series of numbers printed at the bottom of a cheque using special magnetic ink.",
+  //     },
+  //     {
+  //       type: "paragraph",
+  //       content:
+  //         'When you hear "MICR code means," it refers to this special code that helps in the automated processing of cheques and other bank documents.',
+  //     },
+  //     {
+  //       type: "heading",
+  //       content: "Understanding the MICR Code on Cheque",
+  //     },
+  //     {
+  //       type: "paragraph",
+  //       content:
+  //         "The MICR code on cheque is typically a 9-digit number divided into three parts:",
+  //     },
+  //     {
+  //       type: "list",
+  //       content: [
+  //         "City Code (3 digits): Represents the city where the bank branch is located.",
+  //         "Bank Code (3 digits): Identifies the specific bank.",
+  //         "Branch Code (3 digits): Uniquely identifies the particular branch of the bank.",
+  //       ],
+  //     },
+  //     {
+  //       type: "paragraph",
+  //       content:
+  //         "For example, if you see a MICR code like 400002002, it can be broken down as:",
+  //     },
+  //     {
+  //       type: "list",
+  //       content: [
+  //         "400: City code (e.g., Mumbai)",
+  //         "002: Bank code (e.g., State Bank of India)",
+  //         "002: Branch code (e.g., Main Branch)",
+  //       ],
+  //     },
+  //     {
+  //       type: "heading",
+  //       content: "Importance of MICR Code in Banking",
+  //     },
+  //     {
+  //       type: "paragraph",
+  //       content:
+  //         "The MICR code of bank plays a crucial role in various banking operations:",
+  //     },
+  //     {
+  //       type: "list",
+  //       content: [
+  //         "Faster Cheque Processing: MICR codes enable quick and accurate reading of cheque information.",
+  //         "Reduced Errors: The magnetic ink and standardized format minimize errors in cheque processing.",
+  //         "Enhanced Security: MICR codes are difficult to forge, adding an extra layer of security to transactions.",
+  //         "Automated Clearing: It facilitates automated clearing house (ACH) operations, speeding up inter-bank transactions.",
+  //       ],
+  //     },
+  //     {
+  //       type: "heading",
+  //       content: "How to Find MICR Code in Cheque",
+  //     },
+  //     {
+  //       type: "paragraph",
+  //       content:
+  //         "Locating the MICR code in cheque is straightforward. Look at the bottom of your cheque, and you'll see a series of numbers printed in a special font. The MICR code is typically the second set of numbers from the left, following the cheque number.",
+  //     },
+  //     {
+  //       type: "image",
+  //       content:
+  //         "https://res.cloudinary.com/dqquvmo2p/image/upload/v1733173993/Screenshot_from_2024-12-03_02-42-49_pqmvta.png",
+  //     },
+  //     {
+  //       type: "heading",
+  //       content: "MICR Code vs. IFSC Code: Understanding the Difference",
+  //     },
+  //     {
+  //       type: "paragraph",
+  //       content:
+  //         "While both MICR and IFSC codes are important in banking, they serve different purposes:",
+  //     },
+  //     {
+  //       type: "table",
+  //       content: [
+  //         ["Feature", "MICR Code", "IFSC Code"],
+  //         [
+  //           "Full Form",
+  //           "Magnetic Ink Character Recognition",
+  //           "Indian Financial System Code",
+  //         ],
+  //         ["Length", "9 digits", "11 characters (alphanumeric)"],
+  //         [
+  //           "Primary Use",
+  //           "Cheque processing and clearance",
+  //           "Online fund transfers (NEFT, RTGS, IMPS)",
+  //         ],
+  //         ["Format", "Numeric only", "Alphanumeric"],
+  //         [
+  //           "Location",
+  //           "Printed on cheques",
+  //           "Not on cheques; found on bank websites or statements",
+  //         ],
+  //       ],
+  //     },
+  //     {
+  //       type: "heading",
+  //       content: "Frequently Asked Questions About MICR Codes",
+  //     },
+  //     {
+  //       type: "subheading",
+  //       content: "Q: Can I find my MICR code without a cheque?",
+  //     },
+  //     {
+  //       type: "paragraph",
+  //       content:
+  //         "A: Yes, you can find your MICR code without a cheque. Check your bank statement, contact your bank's customer service, or look it up on your bank's official website.",
+  //     },
+  //     {
+  //       type: "subheading",
+  //       content: "Q: Is the MICR code the same for all branches of a bank?",
+  //     },
+  //     {
+  //       type: "paragraph",
+  //       content:
+  //         "A: No, each branch has its unique MICR code. The last three digits of the MICR code (branch code) differ for each branch of the same bank.",
+  //     },
+  //     {
+  //       type: "subheading",
+  //       content: "Q: Can MICR codes change?",
+  //     },
+  //     {
+  //       type: "paragraph",
+  //       content:
+  //         "A: Yes, MICR codes can change if a bank branch relocates or merges with another branch. Always verify the current MICR code with your bank.",
+  //     },
+  //     {
+  //       type: "heading",
+  //       content: "Conclusion",
+  //     },
+  //     {
+  //       type: "paragraph",
+  //       content:
+  //         "Understanding what MICR code means and its importance in banking can help you navigate financial transactions more effectively. Whether you're writing a cheque or setting up direct deposits, knowing how to find and use the MICR code on your cheque is valuable knowledge for any bank account holder.",
+  //     },
+  //     {
+  //       type: "paragraph",
+  //       content:
+  //         "Remember, while MICR codes are crucial for cheque processing, they work alongside other banking codes like IFSC to ensure smooth, secure, and efficient banking operations in the digital age.",
+  //     },
+  //   ],
+  // },
   {
     slug: "ifsc-code-guide-indian-banking",
     title: "IFSC Code: Complete Guide for Indian Banking Transactions",
