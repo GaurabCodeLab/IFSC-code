@@ -20,7 +20,7 @@ export default function BlogPost({ post }: BlogPostProps) {
           alt={post.title}
           width={600}
           height={400}
-          className="w-full h-48 object-cover"
+          className="w-full h-56 object-cover"
         />
       </Link>
       <div className="p-6">

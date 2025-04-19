@@ -138,6 +138,8 @@ export default async function BlogPostPage({ params, searchParams }: Props) {
         return <div key={index}>{block.content()}</div>;
       case "swiftcode":
         return <div key={index}>{block.content()}</div>;
+      case "ifsccode":
+        return <div key={index}>{block.content()}</div>;
       default:
         return null; // Return null for unsupported block types
     }

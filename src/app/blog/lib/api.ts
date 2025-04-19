@@ -2,6 +2,7 @@ import MahaKhumb from "@/components/blogs/MahaKhumb";
 import AirtelPaymentBank from "@/components/blogs/AirtelPaymentBank";
 import IndiaPostBank from "@/components/blogs/IndiaPostBank";
 import SwiftCode from "@/components/blogs/SwiftCode";
+import IfscCode from "@/components/blogs/IfscCode";
 interface BlogPost {
   slug: string;
   title: string;
@@ -24,6 +25,7 @@ type BlogContent =
   | { type: "airtelpaymentbank"; content: any }
   | { type: "indiapostbank"; content: any }
   | { type: "swiftcode"; content: any }
+  | { type: "ifsccode"; content: any }
   | { type: "table"; content: string[][] };
 
 const blogPosts: BlogPost[] = [
@@ -80,6 +82,26 @@ const blogPosts: BlogPost[] = [
       {
         type: "airtelpaymentbank",
         content: AirtelPaymentBank,
+      },
+    ],
+  },
+
+  {
+    slug: "sbi-ifsc-code",
+    title:
+      "SBI IFSC Code: Complete Guide to State Bank of India IFSC Codes | IFSC Code",
+    excerpt:
+      "Find SBI IFSC codes for all branches. Learn how to check IFSC code in SBI Yono app, net banking, and more. Use our free SBI IFSC code finder tool.",
+    coverImage:
+      "https://res.cloudinary.com/dqquvmo2p/image/upload/v1744722075/ifsc_1_mypyzg.png",
+    coverImage2:
+      "https://res.cloudinary.com/dqquvmo2p/image/upload/v1744722075/ifsc_1_mypyzg.png",
+    keywords:
+      "sbi ifsc code, sbi bank ifsc code, sbi main branch ifsc code, sbi branch ifsc code, sbi ifsc code finder, how to check ifsc code in sbi yono app, what is ifsc code of sbi, how to check ifsc code in sbi, where to check ifsc code in sbi online banking, how to find ifsc code in sbi net banking",
+    content: [
+      {
+        type: "ifsccode",
+        content: IfscCode,
       },
     ],
   },
