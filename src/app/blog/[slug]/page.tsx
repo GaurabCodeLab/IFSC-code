@@ -130,8 +130,6 @@ export default async function BlogPostPage({ params, searchParams }: Props) {
             </table>
           </div>
         );
-      case "mahakhumb":
-        return <div key={index}>{block.content()}</div>;
       case "airtelpaymentbank":
         return <div key={index}>{block.content()}</div>;
       case "indiapostbank":

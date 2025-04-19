@@ -60,12 +60,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       slug: "understanding-micr-code-banking",
       title:
-        "Understanding MICR Code: Essential Guide for Banking Transactions",
+        "MICR Code: Complete Guide to Bank MICR Codes in India | IFSC Code",
       publishedAt: "2025-01-18",
-      updatedAt: null, // Use null if never updated after publishing
+      updatedAt: "2025-04-19", // Use null if never updated after publishing
       image:
         "https://res.cloudinary.com/dqquvmo2p/image/upload/v1733173292/DALL_E_2024-12-03_02.28.06_-_A_user-friendly_and_simple_illustration_for_a_blog_about_MICR_codes_in_banking._The_image_features_a_magnifying_glass_hovering_over_a_cheque_clearly_r5evzq.webp",
-      priority: 0.6, // Standard for evergreen content
+      priority: 0.8, // Standard for evergreen content
       changeFrequency: "yearly" as const, // Informational content rarely changes
     },
     {
@@ -77,16 +77,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
         "https://res.cloudinary.com/dqquvmo2p/image/upload/v1733083665/DALL_E_2024-12-02_01.37.27_-_An_illustrative_image_of_a_cheque_book_with_a_highlighted_IFSC_code_paired_with_digital_icons_representing_online_transactions_like_a_mobile_phone_a_xku7ch.webp",
       priority: 0.7,
       changeFrequency: "yearly" as const,
-    },
-    {
-      slug: "maha-kumbh-mela-2025",
-      title: "Maha Kumbh Mela 2025: Significance, Dates & Financial Insights",
-      publishedAt: "2025-03-04",
-      updatedAt: null, // No updates yet
-      image:
-        "https://res.cloudinary.com/dqquvmo2p/image/upload/v1740843277/DALL_E_2025-03-01_21.04.22_-_A_grand_scene_of_the_Maha_Kumbh_Mela_featuring_millions_of_devotees_gathered_at_the_riverbanks_taking_a_holy_dip_in_the_sacred_river._Sadhus_holy_m_q6brd4.webp",
-      priority: 0.8, // Higher priority for trending/current content
-      changeFrequency: "monthly" as const, // Event coverage might update frequently
     },
     {
       slug: "airtel-payment-bank",
