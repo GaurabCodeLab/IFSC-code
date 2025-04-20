@@ -170,9 +170,9 @@ export default function IfscCode() {
           </div>
 
           <p>
-            Using an incorrect SBI IFSC code can lead to failed transactions or
-            delays in fund transfers. Always double-check the IFSC code before
-            initiating any transaction with State Bank of India.
+            Fund transfers may be delayed or transactions may fail if the SBI
+            IFSC code is entered incorrectly. Always double-check the IFSC code
+            before initiating any transaction with State Bank of India.
           </p>
         </section>
 
@@ -254,8 +254,8 @@ export default function IfscCode() {
             IFSC Codes for Major SBI Branches
           </h2>
           <p>
-            Here are the IFSC codes for some of the major State Bank of India
-            branches across India. These are particularly useful if you're
+            The IFSC codes for a few of the largest State Bank of India branches
+            nationwide are listed below. These are particularly useful if you're
             looking for the SBI main branch IFSC code in major cities:
           </p>
 
@@ -333,7 +333,7 @@ export default function IfscCode() {
                 Steps to Find IFSC Code in YONO App
               </h3>
               <ol className="space-y-3 list-decimal pl-5">
-                <li>Open the SBI YONO app on your smartphone</li>
+                <li>Open the SBI YONO application on your mobile phone</li>
                 <li>Log in using your credentials</li>
                 <li>Tap on the "Dashboard" or "Home" section</li>
                 <li>Select the account for which you need the IFSC code</li>
@@ -385,7 +385,7 @@ export default function IfscCode() {
 
         <section id="sbi-netbanking" className="mt-10">
           <h2 className="text-2xl font-bold mb-4">
-            How to Find IFSC Code in SBI Net Banking
+            How to Use SBI Net Banking to Find the IFSC Code
           </h2>
           <p>
             If you're wondering "where to check IFSC code in SBI online banking"
@@ -448,9 +448,9 @@ export default function IfscCode() {
               <div>
                 <h4 className="font-semibold mb-2">SBI Quick App</h4>
                 <p className="text-sm">
-                  Download the SBI Quick app, register with your account
-                  details, and access your IFSC code from the account
-                  information section.
+                  Download the SBI Quick app, fill out the account information
+                  form, then visit the account information section to find your
+                  IFSC code.
                 </p>
               </div>
               <div>
@@ -502,10 +502,11 @@ export default function IfscCode() {
                     Look at your SBI cheque book (printed on cheque leaves)
                   </li>
                   <li>
-                    Log in to SBI Net Banking and check your account details
+                    Find your account details by logging into SBI Net Banking.
                   </li>
                   <li>
-                    Use the SBI YONO app and view your account information
+                    To access your account details and IFSC code, use the SBI
+                    YONO app.
                   </li>
                   <li>Send an SMS with "IFSC BRANCH_NAME" to 09223488888</li>
                   <li>Visit any SBI branch and ask a bank representative</li>
@@ -527,9 +528,9 @@ export default function IfscCode() {
                 How to check IFSC code in SBI YONO app?
               </AccordionTrigger>
               <AccordionContent>
-                <p>To check your IFSC code in the SBI YONO app:</p>
+                <p>To find out IFSC code in the SBI YONO application:</p>
                 <ol className="mt-2 space-y-1 list-decimal pl-5">
-                  <li>Open the SBI YONO app and log in</li>
+                  <li>Log in to SBI YONO app</li>
                   <li>Go to the Dashboard or Home section</li>
                   <li>Select the account for which you need the IFSC code</li>
                   <li>Tap on "Account Details" or "View Details"</li>
@@ -551,9 +552,7 @@ export default function IfscCode() {
                 Where to check IFSC code in SBI online banking?
               </AccordionTrigger>
               <AccordionContent>
-                <p>
-                  To find your IFSC code in SBI online banking (Net Banking):
-                </p>
+                <p>Method to find out IFSC code in SBI online net banking:</p>
                 <ol className="mt-2 space-y-1 list-decimal pl-5">
                   <li>Log in to your SBI Net Banking account</li>
                   <li>Go to the "Accounts Summary" section</li>
@@ -579,7 +578,7 @@ export default function IfscCode() {
                 How to find IFSC code in SBI net banking?
               </AccordionTrigger>
               <AccordionContent>
-                <p>To find your IFSC code in SBI net banking:</p>
+                <p>Method to find out IFSC code in SBI online net banking:</p>
                 <ol className="mt-2 space-y-1 list-decimal pl-5">
                   <li>
                     Log in to your SBI Net Banking account using your username
@@ -616,10 +615,11 @@ export default function IfscCode() {
               </AccordionTrigger>
               <AccordionContent>
                 <p>
-                  No, the SBI IFSC code is not the same for all branches. Each
-                  State Bank of India branch has its own unique IFSC code. While
-                  all SBI IFSC codes start with "SBIN0" (SBIN followed by a
-                  zero), the last 6 characters are unique to each branch.
+                  No, the SBI IFSC code is not the same for all branches of a
+                  particular bank. Each State Bank of India branch has its own
+                  unique IFSC code. While all SBI IFSC codes start with "SBIN0"
+                  (SBIN followed by a zero), the last 6 characters are unique to
+                  each branch.
                 </p>
                 <p className="mt-2">
                   For example, the IFSC code for SBI's New Delhi Main Branch is
@@ -710,18 +710,19 @@ export default function IfscCode() {
           </h2>
           <div className="text-sm text-gray-600 dark:text-gray-400 space-y-3">
             <p>
-              The information provided in this article about SBI IFSC codes is
-              for general informational purposes only. While we strive to keep
-              the information up to date and accurate, we make no
-              representations or warranties of any kind, express or implied,
-              about the completeness, accuracy, reliability, suitability, or
-              availability of the information contained herein.
+              The details shared in this article regarding SBI IFSC codes are
+              intended solely for general informational use. Although we aim to
+              ensure the content remains current and correct, we do not make any
+              guarantees or assurances—either explicit or implied—about the
+              accuracy, reliability, completeness, or suitability of the
+              information provided.
             </p>
 
             <p>
-              This website is not affiliated with, endorsed by, or officially
-              connected with State Bank of India. The official State Bank of
-              India website can be found at{" "}
+              This website is independently operated and is not associated with,
+              authorized by, or officially linked to the State Bank of India.
+              For official information, please visit the State Bank of India's
+              website at{" "}
               <a
                 href="https://www.onlinesbi.sbi/"
                 className="text-primary hover:underline"
