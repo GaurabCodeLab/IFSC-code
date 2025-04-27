@@ -230,12 +230,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   // Utility pages entries
-  // const utilityEntries = utilityPages.map((page) => ({
-  //   url: `${baseUrl}/${page.path}`,
-  //   lastModified: page.lastModified,
-  //   changeFrequency: page.changeFrequency,
-  //   priority: page.priority,
-  // }));
+  const utilityEntries = utilityPages.map((page) => ({
+    url: `${baseUrl}/${page.path}`,
+    lastModified: page.lastModified,
+    changeFrequency: page.changeFrequency,
+    priority: page.priority,
+  }));
 
   // Bank-specific pages
   // const bankEntries = topBanks.map((bank) => ({
@@ -250,7 +250,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...mainPagesEntries,
     ...bankingInfoEntries,
     ...blogEntries,
-    // ...utilityEntries,
+    ...utilityEntries,
     //  ...bankEntries,
   ];
 }
