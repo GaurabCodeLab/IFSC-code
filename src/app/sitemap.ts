@@ -137,38 +137,32 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // =========================================================================
   // UTILITY PAGES - Lower priority supporting content
   // =========================================================================
-  // const utilityPages = [
-  //   {
-  //     path: "about",
-  //     lastModified: new Date("2024-06-15"), // When about page was last updated
-  //     changeFrequency: "yearly" as const, // Rarely changes
-  //     priority: 0.5, // Medium priority
-  //   },
-  //   {
-  //     path: "contact",
-  //     lastModified: new Date("2024-08-22"), // When contact info was last updated
-  //     changeFrequency: "yearly" as const, // Rarely changes
-  //     priority: 0.5, // Medium priority
-  //   },
-  //   {
-  //     path: "privacy-policy",
-  //     lastModified: new Date("2024-09-30"), // When policy was last updated
-  //     changeFrequency: "yearly" as const, // Rarely changes
-  //     priority: 0.3, // Lower priority
-  //   },
-  //   {
-  //     path: "terms-of-service",
-  //     lastModified: new Date("2024-09-30"), // When terms were last updated
-  //     changeFrequency: "yearly" as const, // Rarely changes
-  //     priority: 0.3, // Lower priority
-  //   },
-  //   {
-  //     path: "faq",
-  //     lastModified: new Date("2024-10-15"), // When FAQs were last updated
-  //     changeFrequency: "monthly" as const, // Might update with new questions
-  //     priority: 0.6, // Medium-high priority as users often seek FAQs
-  //   },
-  // ];
+  const utilityPages = [
+    {
+      path: "about-us",
+      lastModified: new Date("2025-04-27"), // When about page was last updated
+      changeFrequency: "yearly" as const, // Rarely changes
+      priority: 0.5, // Medium priority
+    },
+    {
+      path: "contact-us",
+      lastModified: new Date("2025-04-27"), // When contact info was last updated
+      changeFrequency: "yearly" as const, // Rarely changes
+      priority: 0.5, // Medium priority
+    },
+    {
+      path: "privacy-policy",
+      lastModified: new Date("2025-04-27"), // When policy was last updated
+      changeFrequency: "yearly" as const, // Rarely changes
+      priority: 0.3, // Lower priority
+    },
+    {
+      path: "terms-and-conditions",
+      lastModified: new Date("2025-04-27"), // When terms were last updated
+      changeFrequency: "yearly" as const, // Rarely changes
+      priority: 0.3, // Lower priority
+    },
+  ];
 
   // =========================================================================
   // BANK-SPECIFIC PAGES - Dynamic content based on your database
