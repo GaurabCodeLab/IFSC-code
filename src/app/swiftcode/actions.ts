@@ -47,6 +47,8 @@ export async function lookupSwiftCode(prevState: any, formData: FormData) {
           },
         });
 
+        console.log("response hai", response);
+
         if (!response.ok) {
           throw new Error("Failed to fetch bank details");
         }
