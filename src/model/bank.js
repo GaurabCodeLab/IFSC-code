@@ -7,7 +7,10 @@ const bankSchema = new Schema({
     type: String,
     index: true,
   },
-  IFSC: String,
+  IFSC: {
+    type: String,
+    unique: true,
+  },
   BRANCH: String,
   CENTRE: String,
   DISTRICT: String,
@@ -19,7 +22,10 @@ const bankSchema = new Schema({
   CITY: String,
   ISO3166: String,
   NEFT: Boolean,
-  MICR: Number,
+  MICR: {
+    type: Number,
+    unique: true,
+  },
   UPI: Boolean,
   SWIFT: String,
 });
