@@ -2,6 +2,7 @@ import AirtelPaymentBank from "@/components/blogs/AirtelPaymentBank";
 import IndiaPostBank from "@/components/blogs/IndiaPostBank";
 import SwiftCode from "@/components/blogs/SwiftCode";
 import MicrCode from "@/components/blogs/MicrCode";
+import IfscCode from "@/components/blogs/IfscCode";
 interface BlogPost {
   slug: string;
   title: string;
@@ -13,18 +14,11 @@ interface BlogPost {
 }
 
 type BlogContent =
-  | {
-      type: "paragraph" | "heading" | "subheading";
-      content: string;
-      customStyle?: string;
-    }
-  | { type: "list"; content: string[] }
-  | { type: "image"; content: string }
   | { type: "airtelpaymentbank"; content: any }
   | { type: "indiapostbank"; content: any }
   | { type: "swiftcode"; content: any }
   | { type: "micrcode"; content: any }
-  | { type: "table"; content: string[][] };
+  | { type: "ifsccode"; content: any };
 
 const blogPosts: BlogPost[] = [
   {
@@ -85,8 +79,28 @@ const blogPosts: BlogPost[] = [
   },
 
   {
+    slug: "sbi-ifsc-code",
+    title:
+      "SBI IFSC Code: Complete Guide to State Bank of India IFSC Codes | IFSC Code",
+    excerpt:
+      "Find SBI IFSC codes for all branches. Learn how to check IFSC code in SBI Yono app, net banking, and more. Use our free SBI IFSC code finder tool.",
+    coverImage:
+      "https://res.cloudinary.com/dqquvmo2p/image/upload/v1744722075/ifsc_1_mypyzg.png",
+    coverImage2:
+      "https://res.cloudinary.com/dqquvmo2p/image/upload/v1744722075/ifsc_1_mypyzg.png",
+    keywords:
+      "sbi ifsc code, sbi bank ifsc code, sbi main branch ifsc code, sbi branch ifsc code, sbi ifsc code finder, how to check ifsc code in sbi yono app, what is ifsc code of sbi, how to check ifsc code in sbi, where to check ifsc code in sbi online banking, how to find ifsc code in sbi net banking",
+    content: [
+      {
+        type: "ifsccode",
+        content: IfscCode,
+      },
+    ],
+  },
+
+  {
     slug: "understanding-micr-code-banking",
-    title: "MICR Code: Complete Guide to Bank MICR Codes in India | IFSC Code",
+    title: "MICR Code: Complete Guide to Bank MICR Codes in India | MICR Code",
     excerpt:
       "Learn what MICR code is, how to find it on your cheque, and why it's important for banking transactions. Find MICR codes for SBI, Union Bank, and more.",
     coverImage:
@@ -99,195 +113,6 @@ const blogPosts: BlogPost[] = [
       {
         type: "micrcode",
         content: MicrCode,
-      },
-    ],
-  },
-
-  {
-    slug: "ifsc-code-guide-indian-banking",
-    title: "IFSC Code: Complete Guide for Indian Banking Transactions",
-    excerpt:
-      "Learn about IFSC codes, their importance in online banking, and how to find them for major banks like SBI, Bank of Baroda, and more. Essential knowledge for seamless fund transfers.",
-    coverImage:
-      "https://res.cloudinary.com/dqquvmo2p/image/upload/v1733083665/DALL_E_2024-12-02_01.37.27_-_An_illustrative_image_of_a_cheque_book_with_a_highlighted_IFSC_code_paired_with_digital_icons_representing_online_transactions_like_a_mobile_phone_a_xku7ch.webp",
-    content: [
-      {
-        type: "paragraph",
-        content:
-          "In the world of Indian banking, IFSC codes play a crucial role in facilitating online transactions. Whether you're transferring money via NEFT, RTGS, or IMPS, understanding IFSC codes is essential. This comprehensive guide will explain everything you need to know about IFSC codes, including how to find them for major banks like SBI, Bank of Baroda, and more.",
-      },
-      {
-        type: "heading",
-        content: "What is an IFSC Code?",
-      },
-      {
-        type: "paragraph",
-        content:
-          "IFSC stands for Indian Financial System Code. It's a unique 11-character code assigned to bank branches in India, used to identify the bank and branch for electronic fund transfers.",
-      },
-      {
-        type: "heading",
-        content: "Understanding the IFSC Code Structure",
-      },
-      {
-        type: "paragraph",
-        content: "An IFSC code consists of 11 characters:",
-      },
-      {
-        type: "list",
-        content: [
-          "First 4 characters: Alphabets representing the bank name",
-          "5th character: 0 (zero)",
-          "Last 6 characters: Alphanumeric representing the branch",
-        ],
-      },
-      {
-        type: "paragraph",
-        content:
-          'For example, in the IFSC code BARB0VJVADI, "BARB" represents Bank of Baroda, "0" is the default fifth character, and "VJVADI" identifies the specific branch.',
-      },
-      {
-        type: "heading",
-        content: "IFSC Codes for Major Indian Banks",
-      },
-      {
-        type: "subheading",
-        content: "SBI IFSC Code",
-      },
-      {
-        type: "paragraph",
-        content:
-          'State Bank of India (SBI) is India\'s largest public sector bank. The IFSC code for SBI always starts with "SBIN". For example, the IFSC code SBI main branch in Mumbai is SBIN0000300.',
-      },
-      {
-        type: "subheading",
-        content: "Bank of Baroda IFSC Code",
-      },
-      {
-        type: "paragraph",
-        content:
-          'Bank of Baroda IFSC codes start with "BARB". For instance, the IFSC code for Bank of Baroda\'s main branch in Vadodara is BARB0VJVADI.',
-      },
-      {
-        type: "subheading",
-        content: "Canara Bank IFSC Code",
-      },
-      {
-        type: "paragraph",
-        content:
-          'Canara Bank IFSC codes begin with "CNRB". An example IFSC code for Canara Bank is CNRB0000001 for its main branch in Bengaluru.',
-      },
-      {
-        type: "subheading",
-        content: "Indian Bank IFSC Code",
-      },
-      {
-        type: "paragraph",
-        content:
-          'Indian Bank uses "IDIB" as the first four characters of its IFSC code. For example, IDIB000A001 is the IFSC code for Indian Bank\'s main branch in Chennai.',
-      },
-      {
-        type: "subheading",
-        content: "Union Bank IFSC Code",
-      },
-      {
-        type: "paragraph",
-        content:
-          'Union Bank of India IFSC codes start with "UBIN". An example is UBIN0531839 for a Union Bank branch in Mumbai.',
-      },
-      {
-        type: "heading",
-        content: "IFSC Codes for New-Age Banks",
-      },
-      {
-        type: "subheading",
-        content: "Airtel Payment Bank IFSC Code",
-      },
-      {
-        type: "paragraph",
-        content:
-          'Airtel Payment Bank, a relatively new entrant, uses "AIRP" as the first four characters of its IFSC code. For example, AIRP0000001 is used for Airtel Payment Bank transactions.',
-      },
-      {
-        type: "subheading",
-        content: "India Post Payment Bank IFSC Code",
-      },
-      {
-        type: "paragraph",
-        content:
-          'India Post Payment Bank IFSC codes start with "IPOS". An example IFSC code for India Post Payment Bank is IPOS0000001.',
-      },
-      {
-        type: "heading",
-        content: "How to Find Your Bank's IFSC Code",
-      },
-      {
-        type: "list",
-        content: [
-          "Check your cheque book or bank passbook",
-          "Log in to your net banking account",
-          "Use the bank's mobile banking app",
-          "Visit the official website of your bank",
-          "Use the RBI's IFSC finder tool",
-        ],
-      },
-      {
-        type: "heading",
-        content: "Importance of IFSC Codes in Online Banking",
-      },
-      {
-        type: "paragraph",
-        content: "IFSC codes are crucial for:",
-      },
-      {
-        type: "list",
-        content: [
-          "NEFT (National Electronic Funds Transfer) transactions",
-          "RTGS (Real Time Gross Settlement) transfers",
-          "IMPS (Immediate Payment Service) for instant transfers",
-          "Direct Benefit Transfers (DBT) from government schemes",
-          "Automated clearing house (ACH) transactions",
-        ],
-      },
-      {
-        type: "heading",
-        content: "Frequently Asked Questions",
-      },
-      {
-        type: "subheading",
-        content: "Q: Can IFSC codes change?",
-      },
-      {
-        type: "paragraph",
-        content:
-          "A: Yes, IFSC codes can change if a bank branch relocates or merges with another branch. Always verify the current IFSC code before making a transaction.",
-      },
-      {
-        type: "subheading",
-        content: "Q: Are IFSC codes case-sensitive?",
-      },
-      {
-        type: "paragraph",
-        content:
-          "A: Yes, IFSC codes are case-sensitive. Always enter them in capital letters to avoid any transaction errors.",
-      },
-      {
-        type: "subheading",
-        content: "Q: Can I use the same IFSC code for all branches of a bank?",
-      },
-      {
-        type: "paragraph",
-        content:
-          "A: No, each branch has its unique IFSC code. Using the wrong IFSC code may result in failed transactions or delays.",
-      },
-      {
-        type: "heading",
-        content: "Conclusion",
-      },
-      {
-        type: "paragraph",
-        content:
-          "Understanding IFSC codes is crucial for smooth online banking transactions in India. Whether you're using SBI, Bank of Baroda, Canara Bank, or any other bank, always ensure you have the correct IFSC code before initiating a fund transfer. By familiarizing yourself with IFSC codes, you can ensure faster, more secure, and error-free online banking experiences.",
       },
     ],
   },

@@ -51,85 +51,6 @@ export default async function BlogPostPage({ params, searchParams }: Props) {
   // Function to render content blocks dynamically
   const renderContent = (block: any, index: number): React.ReactNode => {
     switch (block.type) {
-      case "paragraph":
-        return (
-          <p
-            key={index}
-            className={block.customStyle ? block.customStyle : "mb-4"}
-          >
-            {block.content}
-          </p>
-        );
-      case "heading":
-        return (
-          <h1 key={index} className="text-2xl font-semibold mt-6 mb-4">
-            {block.content}
-          </h1>
-        );
-      case "subheading":
-        return (
-          <h2
-            key={index}
-            className={
-              block.customStyle
-                ? block.customStyle
-                : "text-xl font-semibold mt-4 mb-2"
-            }
-          >
-            {block.content}
-          </h2>
-        );
-      case "list":
-        return (
-          <ul key={index} className="list-disc pl-6 my-4">
-            {block.content.map((item: string, i: number) => (
-              <li key={i}>{item}</li>
-            ))}
-          </ul>
-        );
-      case "image":
-        const [src, alt] = block.content.split("|");
-        return (
-          <figure key={index} className="my-4">
-            <Image
-              src={src || "/placeholder.svg"}
-              alt={alt}
-              width={800}
-              height={400}
-              className="rounded-lg"
-            />
-            <figcaption className="text-center text-sm text-gray-500 mt-2">
-              {alt}
-            </figcaption>
-          </figure>
-        );
-      case "table":
-        return (
-          <div key={index} className="overflow-x-auto my-4">
-            <table className="min-w-full bg-white border border-gray-300">
-              <thead>
-                <tr className="bg-gray-100">
-                  {block.content[0].map((header: string, i: number) => (
-                    <th key={i} className="py-2 px-4 border-b">
-                      {header}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {block.content.slice(1).map((row: string[], i: number) => (
-                  <tr key={i}>
-                    {row.map((cell: string, j: number) => (
-                      <td key={j} className="py-2 px-4 border-b">
-                        {cell}
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        );
       case "airtelpaymentbank":
         return <div key={index}>{block.content()}</div>;
       case "indiapostbank":
@@ -138,13 +59,15 @@ export default async function BlogPostPage({ params, searchParams }: Props) {
         return <div key={index}>{block.content()}</div>;
       case "micrcode":
         return <div key={index}>{block.content()}</div>;
+      case "ifsccode":
+        return <div key={index}>{block.content()}</div>;
       default:
         return null; // Return null for unsupported block types
     }
   };
 
   return (
-    <main className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8">
       <Link href="/blog" passHref>
         <Button
           variant="ghost"
@@ -169,6 +92,6 @@ export default async function BlogPostPage({ params, searchParams }: Props) {
           {post.content.map((block, index) => renderContent(block, index))}
         </section>
       </article>
-    </main>
+    </div>
   );
 }

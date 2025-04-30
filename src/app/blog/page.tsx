@@ -5,13 +5,13 @@ import { getAllBlogPosts } from "./lib/api";
 export const metadata: Metadata = {
   title: "Our Blogs | BankInfo Hub",
   description:
-    "Read our latest articles and stay up to date with industry trends and insights.",
+    "Discover detailed blogs on IFSC codes, MICR codes, SWIFT codes, and banking procedures in India. Stay updated with practical guides, code explanations, and financial system insights.",
   keywords:
-    "airtel payment bank ifsc code, maha kumbh, maha kumbh mela, maha kumbh mela 2025, bank of baroda ifsc code, ifsc code kya hai, how to check ifsc code, micr code on cheque, micr code kya hota hai, where is micr code on cheque",
+    "ifsc code blogs, micr code articles, swift code information, bank code blog, bank branch code articles, ifsc code guide, micr code guide, swift code blog, indian banking system blog, financial code articles, bank blogs India, RBI code information, banking tutorials, financial identification codes, bank transfer codes India",
   openGraph: {
     title: "Our Blogs | BankInfo Hub",
     description:
-      "Read our latest articles and stay up to date with industry trends and insights.",
+      "Discover detailed blogs on IFSC codes, MICR codes, SWIFT codes, and banking procedures in India. Stay updated with practical guides, code explanations, and financial system insights.",
     type: "website",
     url: "https://ifsccodeb.com/blog",
     images: [
@@ -29,15 +29,13 @@ export default async function BlogPage() {
   const posts = await getAllBlogPosts();
 
   return (
-    <main className="container mx-auto px-4 py-8">
-      <header>
-        <h1 className="text-4xl font-bold mb-8 text-center">Our Blogs</h1>
-      </header>
+    <div className="container mx-auto px-4 py-8">
+      <h1 className="text-4xl font-bold mb-8 text-center">Our Blogs</h1>
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {posts.map((post) => (
           <BlogPost key={post.slug} post={post} />
         ))}
       </section>
-    </main>
+    </div>
   );
 }
