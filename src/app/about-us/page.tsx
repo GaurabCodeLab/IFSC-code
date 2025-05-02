@@ -60,7 +60,14 @@ export default function AboutUs() {
         <h2 className="text-xl font-semibold mb-4">Have Questions?</h2>
         <p className="mb-4">
           We're here to help! If you have any questions about our services or
-          need assistance, please visit our{" "}
+          need assistance, please contact on linkedin{" "}
+          <a
+            href="https://www.linkedin.com/in/gaurabfrontendmagic/"
+            className="text-blue-600 hover:underline"
+          >
+            linkedin.com/in/gaurabfrontendmagic
+          </a>{" "}
+          or visit our{" "}
           <Link href="/contact-us" className="text-blue-600 hover:underline">
             Contact Us
           </Link>{" "}

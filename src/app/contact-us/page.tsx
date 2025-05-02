@@ -3,7 +3,7 @@
 import type React from "react";
 
 import { useState } from "react";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, Phone, LinkedinIcon } from "lucide-react";
 
 export default function ContactUs() {
   const [formData, setFormData] = useState({
@@ -150,7 +150,7 @@ export default function ContactUs() {
 
           <div className="space-y-4 mb-6">
             <div className="flex items-start">
-              <Mail className="w-5 h-5 mt-1 mr-3 text-gray-600" />
+              <Mail className="w-5 h-5 mt-1 mr-3 text-gray-600 self-center" />
               <div>
                 <h3 className="font-medium">Email</h3>
                 <p className="text-gray-600">kumargaurab56@gmail.com</p>
@@ -158,10 +158,23 @@ export default function ContactUs() {
             </div>
 
             <div className="flex items-start">
-              <MapPin className="w-5 h-5 mt-1 mr-3 text-gray-600" />
+              <MapPin className="w-5 h-5 mt-1 mr-3 text-gray-600 self-center" />
               <div>
                 <h3 className="font-medium">Address</h3>
                 <p className="text-gray-600">Hyderabad</p>
+              </div>
+            </div>
+
+            <div className="flex items-start">
+              <LinkedinIcon className="w-5 h-5 mt-1 mr-3 text-gray-600 self-center" />
+              <div>
+                <h3 className="font-medium">LinkedIn</h3>
+                <a
+                  className="text-gray-600"
+                  href="https://www.linkedin.com/in/gaurabfrontendmagic/"
+                >
+                  linkedin.com/in/gaurabfrontendmagic
+                </a>
               </div>
             </div>
 
