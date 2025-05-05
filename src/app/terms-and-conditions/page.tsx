@@ -1,4 +1,38 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Terms and Conditions | BankInfo Hub",
+  description:
+    "Review BankInfo Hub's terms and conditions for using our IFSC code, MICR code, and SWIFT code lookup services. Understand our disclaimer on banking information accuracy and your responsibilities.",
+  keywords: [
+    "terms and conditions",
+    "banking information terms",
+    "IFSC code lookup terms",
+    "disclaimer",
+    "user agreement",
+    "banking data terms of use",
+    "legal terms",
+  ],
+  alternates: {
+    canonical: "https://ifsccodeb.com/terms-and-conditions",
+  },
+  openGraph: {
+    title: "Terms and Conditions | BankInfo Hub",
+    description:
+      "Review BankInfo Hub's terms and conditions for using our banking information services.",
+    url: "https://ifsccodeb.com/terms-and-conditions",
+    siteName: "BankInfo Hub",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Terms and Conditions | BankInfo Hub",
+    description:
+      "Review BankInfo Hub's terms and conditions for using our banking information services.",
+  },
+};
 
 export default function TermsAndConditions() {
   return (

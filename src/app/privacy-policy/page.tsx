@@ -1,4 +1,38 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy | BankInfo Hub",
+  description:
+    "Read BankInfo Hub's privacy policy to understand how we collect, use, and protect your information when using our IFSC code, MICR code, and SWIFT code lookup services.",
+  keywords: [
+    "privacy policy",
+    "banking information privacy",
+    "IFSC code lookup privacy",
+    "data protection",
+    "cookie policy",
+    "user privacy rights",
+    "banking data privacy",
+  ],
+  alternates: {
+    canonical: "https://ifsccodeb.com/privacy-policy",
+  },
+  openGraph: {
+    title: "Privacy Policy | BankInfo Hub",
+    description:
+      "Read BankInfo Hub's privacy policy to understand how we collect, use, and protect your information.",
+    url: "https://ifsccodeb.com/privacy-policy",
+    siteName: "BankInfo Hub",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Privacy Policy | BankInfo Hub",
+    description:
+      "Read BankInfo Hub's privacy policy to understand how we collect, use, and protect your information.",
+  },
+};
 
 export default function PrivacyPolicy() {
   return (

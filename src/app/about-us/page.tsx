@@ -1,4 +1,38 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About BankInfo Hub | Banking Information Resource",
+  description:
+    "Learn about BankInfo Hub, your trusted source for IFSC codes, MICR codes, and SWIFT codes for Indian banks. Discover our mission, data sources, and commitment to accuracy.",
+  keywords: [
+    "about BankInfo Hub",
+    "banking information",
+    "IFSC code lookup",
+    "MICR code database",
+    "SWIFT code directory",
+    "Indian banks",
+    "bank branch details",
+  ],
+  alternates: {
+    canonical: "https://ifsccodeb.com/about-us",
+  },
+  openGraph: {
+    title: "About BankInfo Hub | Banking Information Resource",
+    description:
+      "Your trusted source for accurate IFSC, MICR, and SWIFT codes for all Indian banks and branches.",
+    url: "https://ifsccodeb.com/about-us",
+    siteName: "BankInfo Hub",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About BankInfo Hub | Banking Information Resource",
+    description:
+      "Your trusted source for accurate IFSC, MICR, and SWIFT codes for all Indian banks and branches.",
+  },
+};
 
 export default function AboutUs() {
   return (
