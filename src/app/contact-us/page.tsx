@@ -1,5 +1,6 @@
 import type React from "react";
 import type { Metadata } from "next";
+
 import ContactUs from "@/components/common/ContactUs";
 
 export const metadata: Metadata = {
