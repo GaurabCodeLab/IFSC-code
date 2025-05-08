@@ -1,9 +1,9 @@
-import { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
-import { getBlogPostBySlug } from "../lib/api";
-import { Button } from "@/components/ui/button";
-import { ArrowLeft } from "lucide-react";
+import { Metadata } from 'next';
+import Image from 'next/image';
+import Link from 'next/link';
+import { getBlogPostBySlug } from '../lib/api';
+import { Button } from '@/components/ui/button';
+import { ArrowLeft } from 'lucide-react';
 
 // Define the types for params and searchParams
 type Params = {
@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: `${post.title}`,
       description: post.excerpt,
-      type: "article",
+      type: 'article',
       url: `https://ifsccodeb.com/blog/${post.slug}`,
       images: [
         {
@@ -51,15 +51,17 @@ export default async function BlogPostPage({ params, searchParams }: Props) {
   // Function to render content blocks dynamically
   const renderContent = (block: any, index: number): React.ReactNode => {
     switch (block.type) {
-      case "airtelpaymentbank":
+      case 'airtelpaymentbank':
         return <div key={index}>{block.content()}</div>;
-      case "indiapostbank":
+      case 'indiapostbank':
         return <div key={index}>{block.content()}</div>;
-      case "swiftcode":
+      case 'swiftcode':
         return <div key={index}>{block.content()}</div>;
-      case "micrcode":
+      case 'micrcode':
         return <div key={index}>{block.content()}</div>;
-      case "ifsccode":
+      case 'ifsccode':
+        return <div key={index}>{block.content()}</div>;
+      case 'paytmpaymentbank':
         return <div key={index}>{block.content()}</div>;
       default:
         return null; // Return null for unsupported block types
@@ -81,7 +83,7 @@ export default async function BlogPostPage({ params, searchParams }: Props) {
         <header className="mb-8">
           <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
           <Image
-            src={post.coverImage || "/placeholder.svg"}
+            src={post.coverImage || '/placeholder.svg'}
             alt={post.title}
             width={1200}
             height={30}
