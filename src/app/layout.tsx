@@ -26,7 +26,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head><meta name="monetag" content="26c438de7d2ee6ef6c8a43f3b36b713b"></head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-[100vh]`}
       >
