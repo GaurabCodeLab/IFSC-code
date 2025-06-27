@@ -113,6 +113,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9, // Higher priority for trending/current content
       changeFrequency: "monthly" as const, // Event coverage might update frequently
     },
+    {
+      slug: "paytm-payment-bank",
+      title:
+        "Paytm Payment Bank: Complete Guide to Services, RBI Updates & Digital Wallet Features",
+      publishedAt: "2025-06-28",
+      updatedAt: null, // No updates yet
+      image:
+        "https://res.cloudinary.com/dqquvmo2p/image/upload/v1746735382/msid-107958388_width-1200_height-900_resizemode-4_kipkp8.jpg",
+      priority: 0.9, // Higher priority for trending/current content
+      changeFrequency: "monthly" as const, // Event coverage might update frequently
+    },
     // Add more blog posts here
     // {
     //   slug: "digital-banking-trends-2025",
