@@ -1,13 +1,13 @@
-import Image from 'next/image';
-import Link from 'next/link';
+import Image from "next/image";
+import Link from "next/link";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from '@/components/ui/accordion';
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+} from "@/components/ui/accordion";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 export default function PaytmPaymentBankBlogClient() {
   return (
@@ -18,11 +18,11 @@ export default function PaytmPaymentBankBlogClient() {
           Updates
         </h1>
 
-        <div className="flex items-center gap-2 text-sm text-muted-foreground mb-8">
+        {/* <div className="flex items-center gap-2 text-sm text-muted-foreground mb-8">
           <span>Published: April 20, 2025</span>
           <span>•</span>
           <span>Last Updated: April 20, 2025</span>
-        </div>
+        </div> */}
 
         <div className="relative w-full h-[400px] rounded-lg overflow-hidden mb-8">
           <Image
@@ -209,14 +209,14 @@ export default function PaytmPaymentBankBlogClient() {
                 Payments Bank
               </li>
               <li>
-                To know about these banking services go to our{' '}
+                To know about these banking services go to our{" "}
                 <a href="" className="text-blue-700 hover:underline">
                   Airtel Payments Bank
-                </a>{' '}
-                or{' '}
+                </a>{" "}
+                or{" "}
                 <a href="" className="text-blue-700 hover:underline">
                   India Post Payments Bank
-                </a>{' '}
+                </a>{" "}
                 blogs for more details
               </li>
               <li>
@@ -293,7 +293,7 @@ export default function PaytmPaymentBankBlogClient() {
 
           <p>
             If you need to verify this IFSC code or find IFSC codes for other
-            banks, you can use the{' '}
+            banks, you can use the{" "}
             <Link
               href="https://www.ifsccodeb.com"
               className="text-blue-600 hover:underline"
@@ -705,7 +705,7 @@ export default function PaytmPaymentBankBlogClient() {
               </AccordionTrigger>
               <AccordionContent>
                 <p>
-                  The IFSC code for Paytm Payment Bank is{' '}
+                  The IFSC code for Paytm Payment Bank is{" "}
                   <strong>PYTM0123456</strong>. This is a universal IFSC code
                   used for all Paytm Payment Bank accounts across India. You can
                   use this code for receiving money from any bank through NEFT,
@@ -795,14 +795,14 @@ export default function PaytmPaymentBankBlogClient() {
                     Payments Bank)
                   </li>
                   <li>
-                    To know about these banking services go to our{' '}
+                    To know about these banking services go to our{" "}
                     <a href="" className="text-blue-700 hover:underline">
                       Airtel Payments Bank
-                    </a>{' '}
-                    or{' '}
+                    </a>{" "}
+                    or{" "}
                     <a href="" className="text-blue-700 hover:underline">
                       India Post Payments Bank
-                    </a>{' '}
+                    </a>{" "}
                     blogs for more details
                   </li>
                   <li>Digital services from traditional banks</li>
@@ -834,13 +834,13 @@ export default function PaytmPaymentBankBlogClient() {
             For those affected by these restrictions, it's advisable to explore
             alternative banking options. If you need to find IFSC codes for
             other banks in India, our comprehensive IFSC Code Finder tool makes
-            the process quick and easy. Simply visit{' '}
+            the process quick and easy. Simply visit{" "}
             <Link
               href="https://www.ifsccodeb.com"
               className="text-blue-600 hover:underline"
             >
               ifsccodeb.com
-            </Link>{' '}
+            </Link>{" "}
             to find accurate IFSC codes for all banks and branches across India.
           </p>
           <div className="mt-6 flex justify-center">
@@ -878,7 +878,7 @@ export default function PaytmPaymentBankBlogClient() {
               This website is not affiliated with, endorsed by, or officially
               connected with Paytm Payment Bank or any of its subsidiaries or
               affiliates. The official Paytm Payment Bank website can be found
-              at{' '}
+              at{" "}
               <a
                 href="https://www.paytmbank.com"
                 className="text-primary hover:underline"
@@ -889,7 +889,7 @@ export default function PaytmPaymentBankBlogClient() {
               </a>
               .
             </p>
-            <p>Last Updated: May 9, 2025</p>
+            {/* <p>Last Updated: May 9, 2025</p> */}
           </div>
         </section>
       </article>
