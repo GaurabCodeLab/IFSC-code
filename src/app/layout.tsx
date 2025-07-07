@@ -5,6 +5,7 @@ import Footer from "@/components/common/Footer";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import Script from "next/script";
 import "./globals.css";
 
 const geistSans = localFont({
@@ -28,7 +29,13 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="monetag" content="26c438de7d2ee6ef6c8a43f3b36b713b"></meta>
-        {/* <script>(function(d,z,s){s.src='https://'+d+'/401/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('groleegni.net',9542518,document.createElement('script'))</script> */}
+        <Script
+          id="monetag-script"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function(d,z,s){s.src='https://'+d+'/401/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('groleegni.net',9542518,document.createElement('script'))`,
+          }}
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-[100vh]`}
