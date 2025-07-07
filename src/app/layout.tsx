@@ -36,6 +36,13 @@ export default function RootLayout({
             __html: `(function(d,z,s){s.src='https://'+d+'/401/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('groleegni.net',9542518,document.createElement('script'))`,
           }}
         />
+        <Script
+          id="monetag-tag-script"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(s=>{s.dataset.zone='9542543',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))`,
+          }}
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-[100vh]`}
