@@ -29,7 +29,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="monetag" content="26c438de7d2ee6ef6c8a43f3b36b713b"></meta>
-        <Script
+        {/* <Script
           id="monetag-script"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
@@ -42,7 +42,13 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `(s=>{s.dataset.zone='9542543',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))`,
           }}
-        />
+        /> */}
+        <script
+          src="https://fpyf8.com/88/tag.min.js"
+          data-zone="154273"
+          async
+          data-cfasync="false"
+        ></script>
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-[100vh]`}
