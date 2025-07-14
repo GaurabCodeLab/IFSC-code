@@ -83,7 +83,7 @@ export default function IFSCLookup() {
               <ResultsArea branchDetails={branchDetails} />
             )}
           </CardContent>
-          <Link href="/">
+          <Link href="https://otieu.com/4/9572317">
             <SubmitButton />
           </Link>
         </Card>

@@ -29,26 +29,30 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="monetag" content="26c438de7d2ee6ef6c8a43f3b36b713b"></meta>
-        {/* <Script
-          id="monetag-script"
+        <Script
+          id="monetag-loader"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
-            __html: `(function(d,z,s){s.src='https://'+d+'/401/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('groleegni.net',9542518,document.createElement('script'))`,
+            __html: `(function(d,z,s){
+      s.src='https://'+d+'/401/'+z;
+      try {
+        (document.body || document.documentElement).appendChild(s);
+      } catch(e) {}
+    })('groleegni.net',9572390,document.createElement('script'));`,
           }}
         />
         <Script
-          id="monetag-tag-script"
+          id="monetag-loader"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
-            __html: `(s=>{s.dataset.zone='9542543',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))`,
+            __html: `(function(d,z,s){
+      s.src='https://'+d+'/401/'+z;
+      try {
+        (document.body || document.documentElement).appendChild(s);
+      } catch(e) {}
+    })('gizokraijaw.net',9572404,document.createElement('script'));`,
           }}
-        /> */}
-        <script
-          src="https://fpyf8.com/88/tag.min.js"
-          data-zone="155554"
-          async
-          data-cfasync="false"
-        ></script>
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-[100vh]`}
